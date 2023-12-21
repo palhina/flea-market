@@ -5,15 +5,17 @@
 @endsection
 
 @section('content')
-    @if (session('result'))
-        <div class="flash_message">
-            {{ session('result') }}
-        </div>
-    @endif
     <div class="login__content">
         <div class="login__group-title">
             <h1>ログイン</h1>
         </div>
+        
+        @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+        @endif
+        
         <form class="form" action="/login" method="post">
             @csrf
             <div class="login__form-content">

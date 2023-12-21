@@ -25,7 +25,7 @@ class AuthController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return view('auth.login');
+        return view('auth.login')->with('result', '新規登録に成功しました');
     }
 
     // ユーザーログインページ表示

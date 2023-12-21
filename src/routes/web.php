@@ -27,3 +27,5 @@ Route::middleware('auth')->group(function (){
 });
 
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{id}', [ItemController::class, 'detail']);
+

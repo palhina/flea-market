@@ -9,6 +9,13 @@
         <div class="register__group-title">
             <h1>会員登録</h1>
         </div>
+        
+        @if (session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+        @endif
+        
         <form class="form" action="/register" method="post">
             @csrf
             <div class="register__form-content">

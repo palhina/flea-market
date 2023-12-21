@@ -28,7 +28,7 @@ class ItemsTableSeeder extends Seeder
             'user_id' => '1',
             'item_category_id' => '2',
             'condition_id' =>'1',
-            'img_url' =>'/images/item/figrine.jpg',
+            'img_url' =>'/images/item/figurine.jpg',
             'item_name' =>'アロマキャンドル',
             'description' =>'バラをかたどったアロマキャンドルです。',
             'price' =>'3000',

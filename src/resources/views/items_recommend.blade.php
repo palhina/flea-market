@@ -24,13 +24,13 @@
         </div>
     </div>
     <div class="item-all">
-        <!-- atforeach  -->
+        @foreach($items as $item)
         <div class="item-all__card">
-            <form class="form" action="" method="get">
-                <!-- csrf -->
-                <input class="card__img" type="image" id="image" alt="Item" src="sushi.jpg" />
+            <form class="form" action="/item/{{$item->id}}" method="get">
+                @csrf
+                <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
             </form>
         </div>
-        <!-- endforeach -->
+        @endforeach
     </div>
 @endsection
