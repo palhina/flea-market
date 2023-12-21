@@ -1,0 +1,35 @@
+.item-list__wrapper {
+    border-bottom: 1px solid #000;
+    margin: 20px 0;
+    display: flex;
+}
+
+.item__list--sell,
+.item__list--buy {
+    margin: 10px 30px;
+    font-size: larger;
+    background-color: #FFF;
+    border-style: none;
+    cursor: pointer;
+}
+
+.item__list--sell {
+    color: #FF5555;
+}
+
+.item-all {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    margin: auto;
+}
+
+.item-all__card {
+    margin: 30px;
+}
+
+.card__img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}

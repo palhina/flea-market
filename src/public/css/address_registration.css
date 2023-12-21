@@ -1,0 +1,49 @@
+.register-address__content {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.register-address__group-title {
+    text-align: center;
+    margin: 50px;
+}
+
+.form__input {
+    margin: 50px 0;
+}
+
+.form__ttl {
+    font-weight: bold;
+}
+
+input[type="text"] {
+    border: 2px solid #909090;
+    margin: 0;
+    padding: 10px;
+    border-radius: 3px;
+    width: 100%;
+    height: 10%;
+}
+
+.form__error {
+    color: #ff0000;
+    border-bottom: 30px;
+}
+
+.form__button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form__button-register {
+    padding: 10px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    background: #FF5555;
+    color: #fff;
+    font-size: large;
+    cursor: pointer;
+    margin-top: 30px;
+}
