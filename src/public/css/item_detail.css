@@ -1,7 +1,3 @@
-.main {
-    margin: auto;
-}
-
 .item-detail__wrapper {
     display: flex;
     justify-content: space-around;
@@ -35,10 +31,21 @@
     justify-content: left;
 }
 
-.item__rating {
+.item__fav-add{
     margin: 0 30px;
 }
 
+.fav-btn__favorite,
+.fav-btn__not,
+.comment-btn{
+    background-color: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
+.item__rating {
+    margin: 0 30px;
+}
 
 .item__contents-buy {}
 
@@ -48,6 +55,7 @@
     color: #FFF;
     padding: 10px;
     width: 60%;
+    cursor: pointer;
 }
 
 .item__tag-table {}

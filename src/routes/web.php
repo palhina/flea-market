@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +27,22 @@ Route::post('/login', [AuthController::class, 'postLogin']);
 Route::middleware('auth')->group(function (){
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/item/favorite', [ItemController::class, 'favorite']);
+    Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
+    Route::get('/sell', [ItemController::class, 'list']);
+
+    Route::post('/favorite_add/{id}', [FavoriteController::class, 'addFavorite']);
+    Route::delete('/favorite_delete/{id}', [FavoriteController::class, 'deleteFavorite']);
+
+    Route::get('/comment/{id}', [CommentController::class, 'comment']);
+    Route::post('/comment/{id}', [CommentController::class, 'commentTo']);
+
+    Route::get('/address', [ProfileController::class, 'address']);
+    Route::get('/mypage', [ProfileController::class, 'soldItem']);
+    Route::get('/mypage/buy', [ProfileController::class, 'boughtItem']);
+
 });
 
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{id}', [ItemController::class, 'detail']);
+Route::post('/search', [ItemController::class, 'search']);
 

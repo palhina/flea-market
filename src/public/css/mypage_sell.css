@@ -1,4 +1,41 @@
-.item-list__wrapper {
+.item__profile{
+    display: flex;
+    justify-content: center;
+}
+
+.item__profile--content {
+    margin: 30px auto;
+    display: flex;
+}
+
+.profile__img {
+    height: 150px
+}
+
+.item__profile-data{
+    margin: auto 20px;
+}
+
+.form__ttl{
+    font-size: 30px;
+    font-weight: bold;
+    margin: 30px;
+}
+
+.item__profile-edit{
+    margin: auto 50px;
+}
+
+.profile__edit-btn{
+    color: #FF5555;
+    font-size: 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+    border: 2px solid #FF5555;
+    cursor: pointer;
+}
+
+.item-all__list--wrapper {
     border-bottom: 1px solid #000;
     margin: 20px 0;
     display: flex;

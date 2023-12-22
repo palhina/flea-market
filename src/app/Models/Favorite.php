@@ -22,4 +22,10 @@ class Favorite extends Model
     {
         return $this->belongsTo(Item::class, 'item_id', 'id');
     }
+
+    //   お気に入り登録があるかどうかを調べる
+    public function scopeIsFavorite($query, $itemId, $userId)
+    {
+        return $query->where('item_id', $itemId)->where('user_id', $userId);
+    }
 }

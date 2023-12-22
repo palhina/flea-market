@@ -63,6 +63,14 @@ class ItemCategoriesTableSeeder extends Seeder
                 'item_id' => '8',
                 'category_id' => '9',
             ],
+            [
+                'item_id' => '9',
+                'category_id' => '3',
+            ],
+            [
+                'item_id' => '10',
+                'category_id' => '2',
+            ],
         ];
         foreach ($item_categories as $item_category) 
         {

@@ -13,7 +13,10 @@
 <body>
     <header class="header">
         <div class="header-ttl">
-            <img class="header-ttl-img" src="" alt="coachtech">
+            <img class="header-ttl-logo" src="/images/icon/logo_img.svg">
+            <a href="/" class="header-ttl-link">
+                <img class="header-ttl-img" src="/images/icon/coachtech_img.png" alt="coachtech">
+            </a>
         </div>
         @yield('header')
     </header>

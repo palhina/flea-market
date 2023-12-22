@@ -19,17 +19,37 @@
             <h1 class="item__contents-ttl">{{ $item->item_name }}</h1>
             <h2 class="item__contents-price">￥{{ $item->price }}</h2>
             <div class="item__contents-rating">
-                <div class="item__rating">
-                    <img src="" alt="favorite">
-                    <p class="item__fav-number">3</p>
+                <div class="item__fav-add">
+                    @if ($item->isFavorite)   
+                        <form class="fav__delete" method="post" action="/favorite_delete/{{ $favorites->firstWhere('item_id', $item->id)->id }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="fav-btn__favorite" type="submit">
+                                <img class="rating__fav-icon" alt="favorite" src="/images/icon/star-fav.png" />
+                            </button>
+                        </form>
+                    @else
+                        <form  class="fav__add" method="post" action="/favorite_add/{{ $item->id }}">
+                            @csrf
+                            <button class="fav-btn__not" type="submit">
+                                <img class="rating__fav-icon" alt="notFavorite" src="/images/icon/star.png" />
+                            </button>
+                        </form>
+                    @endif
+                    <p class="item__fav-number"> {{ $favoriteCount }}</p>
                 </div>
                 <div class="item__rating">
-                    <img src="" alt="comment">
-                    <p class="item__fav-number">14</p>
+                    <form  class="item__comment" method="get" action="/comment/{{$item->id}}">
+                        @csrf
+                        <button class="comment-btn" type="submit">
+                            <img class="rating__comment-icon" alt="Comment" src="/images/icon/comment.png" />
+                        </button>
+                    </form>
+                    <p class="item__fav-number"> {{ $commentCount }}</p>
                 </div>        
             </div>
-            <form class="item__contents-buy" action="" method="get">
-                <!-- csrf -->
+            <form class="item__contents-buy" action="/purchase/{{ $item->id }}" method="get">
+                @csrf
                 <button class="item__buy-btn">購入する</button>
             </form>
             <div class="item__desc-wrapper">
