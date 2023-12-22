@@ -16,11 +16,11 @@
                     <img class="profile__img" id="img" accept="image/*" src="https://tool-engineer.work/wp-content/uploads/2022/06/default.png">
                 </div>    
                 <div class="item__profile-data">
-                    <p class="form__ttl">ユーザー名</p>
+                    <p class="form__ttl">{{ $user->name }}様</p>
                 </div>
             </div>
             <div class="item__profile-edit">
-                <form class="form" action="/address" method="get">
+                <form class="form" action="/address/{{ $user->id }}" method="get">
                 @csrf
                     <button class="profile__edit-btn">プロフィールを編集</button>
                 </form>
@@ -41,14 +41,14 @@
             </div>
         </div>
         <div class="item-all">
-            <!-- atforeach  -->
+            @foreach($items as $item) 
             <div class="item-all__card">
-                <form class="form" action="" method="get">
-                    <!-- csrf -->
-                    <input class="card__img" type="image" id="image" alt="Item" src="sushi.jpg" />
+                <form class="form" action="/item/{{ $item->id}}" method="get">
+                    @csrf
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
                 </form>
             </div>
-            <!-- endforeach -->
+            @endforeach
         </div>
     </div>
 @endsection

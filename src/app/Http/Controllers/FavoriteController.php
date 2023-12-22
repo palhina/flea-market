@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Favorite;
+use App\Models\Comment;
 
 class FavoriteController extends Controller
 {
@@ -26,8 +27,9 @@ class FavoriteController extends Controller
         
         // マイリスト登録数をカウント
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
+        $commentCount = Comment::where('item_id', $item->id)->count();
 
-        return view('item_detail', compact('item','favorites','categories','favoriteCount'));
+        return view('item_detail', compact('item','favorites','categories','favoriteCount','commentCount'));
     }
 
     // お気に入り削除機能
