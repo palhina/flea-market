@@ -18,14 +18,19 @@ class SoldItemsTableSeeder extends Seeder
             [
                 'user_id' => '1',
                 'item_id' => '6',
+                'payment_id' => '1'
             ],
             [
                 'user_id' => '1',
                 'item_id' => '8',
+                'payment_id' => '2'
+
             ],
             [
                 'user_id' => '2',
                 'item_id' => '3',
+                'payment_id' => '1'
+
             ],
 
         ];
@@ -34,6 +39,7 @@ class SoldItemsTableSeeder extends Seeder
             SoldItem::create([
                 'user_id' => $sold_item['user_id'],
                 'item_id' => $sold_item['item_id'],
+                'payment_id' => $sold_item['payment_id'],
             ]);
         }
     }

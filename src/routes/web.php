@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/item/favorite', [ItemController::class, 'favorite']);
     Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
+    Route::post('/purchase', [ItemController::class, 'getItem']);
     Route::get('/sell', [ItemController::class, 'list']);
 
     Route::post('/favorite_add/{id}', [FavoriteController::class, 'addFavorite']);
@@ -36,7 +37,9 @@ Route::middleware('auth')->group(function (){
     Route::get('/comment/{id}', [CommentController::class, 'comment']);
     Route::post('/comment/{id}', [CommentController::class, 'commentTo']);
 
-    Route::get('/address', [ProfileController::class, 'address']);
+    Route::get('/address/{id}', [ProfileController::class, 'address']);
+    Route::post('/address/{id}', [ProfileController::class, 'createAddress']);
+    Route::get('/purchase/address/{id}', [ProfileController::class, 'editAddress']);
     Route::get('/mypage', [ProfileController::class, 'soldItem']);
     Route::get('/mypage/buy', [ProfileController::class, 'boughtItem']);
 

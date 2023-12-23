@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
 use App\Models\Favorite;
 use App\Models\Comment;
-
-
+use App\Models\Address;
+use App\Models\Payment;
+use App\Models\SoldItem;
 
 class ItemController extends Controller
 {
@@ -42,12 +43,28 @@ class ItemController extends Controller
     public function purchase($id)
     {
         $item = Item::find($id);
-        return view('buy_item',compact('item'));
+        $payments = Payment::all();
+        $userId = Auth::id();
+        $userAddress = Address::addressByUser($userId);
+        return view('buy_item',compact('item','payments','userAddress'));
+    }
+
+    // 商品購入処理
+    public function getItem(Request $request,$id)
+    {
+        $item = Item::find($id);
+        $user = Auth::user();
+        SoldItem::create([
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+        ]);
+        return view('buy_item');
     }
 
     // 出品ページ表示
     public function list()
     {
+       
         return view('sell_item');
     }
 

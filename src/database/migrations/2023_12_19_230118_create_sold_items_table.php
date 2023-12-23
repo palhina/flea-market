@@ -17,6 +17,7 @@ class CreateSoldItemsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('payment_id');
             $table->timestamps();
         });
     }

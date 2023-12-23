@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="item__profile-edit">
-                <form class="form" action="/address/{{ $user->id }}" method="get">
+                <form class="form" action="/purchase/address/{{ $user->id }}" method="get">
                 @csrf
                     <button class="profile__edit-btn">プロフィールを編集</button>
                 </form>

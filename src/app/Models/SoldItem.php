@@ -12,6 +12,7 @@ class SoldItem extends Model
     [
         'user_id',
         'item_id',
+        'payment_id',
     ];
 
     public function user()
@@ -21,5 +22,9 @@ class SoldItem extends Model
     public function item()
     {
         return $this->belongsTo(Item::class, 'item_id', 'id');
+    }
+    public function payment()
+    {
+        return $this->belongsTo(Payment::class, 'payment_id', 'id');
     }
 }

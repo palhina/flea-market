@@ -1,0 +1,13 @@
+.error__contents{
+    margin: 100px auto;
+    text-align: center;
+    font-size: large;
+}
+
+.address__edit-btn{
+    background-color: #FFF;
+    border: none;
+    cursor: pointer;
+    font-size: larger;
+    color:blueviolet;
+}

@@ -20,4 +20,10 @@ class Address extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    // ユーザーのアドレスを返す
+    public static function addressByUser($userId)
+    {
+        return Address::where('user_id', $userId)->first();
+    }
 }

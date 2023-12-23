@@ -13,8 +13,8 @@
         <div class="register-address__group-title">
             <h1>住所の変更</h1>
         </div>
-        <form class="form" action="" method="post">
-            <!-- csrf -->
+        <form class="form" action="/address/{{ $user->id }}" method="post">
+            @csrf
             <div class="register__form-content">
                 <div class="form__input">
                     <p class="form__ttl">郵便番号</p>
