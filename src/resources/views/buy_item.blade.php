@@ -14,7 +14,6 @@
 
 @section('content') 
     <div class="item-buy__wrapper">
-        <form action="/purchase/{{$item->id}}" method="post">
             <div class="item__contents-detail">
                 <div class="item__contents">
                     <div class="item__contents-img">
@@ -76,8 +75,11 @@
                         </tr>
                     </table>
                 </div>
+                        <form action="/purchase/{{$item->id}}" method="post">
+                            @csrf
                 <button class="item__buy-btn" type="submit">購入する</button>
-            </div>
         </form>
+
+            </div>
     </div>
 @endsection

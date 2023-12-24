@@ -8,6 +8,7 @@ use App\Models\Item;
 use App\Models\Address;
 use App\Models\Favorite;
 use App\Models\Comment;
+use App\Models\Payment;
 
 
 class ProfileController extends Controller
@@ -38,7 +39,8 @@ class ProfileController extends Controller
         $item = Item::find($id);
         $userId = Auth::id();
         $userAddress = Address::addressByUser($userId);
-        return view('buy_item',compact('item','userAddress'));
+        $payments = Payment::all();
+        return view('buy_item',compact('item','userAddress','payments'));
     }
 
     // プロフィール編集画面表示

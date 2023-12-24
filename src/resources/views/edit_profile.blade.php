@@ -17,7 +17,13 @@
                 @csrf
                 @method('PUT')
                 <div class="register__profile">
-                    <img class="profile__img" id="img" accept="image/*" src="{{asset('storage/' . $user->img_url)}}">
+                    @if (strpos($user->img_url, '/images/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{ $user->img_url }}">
+                    @elseif (strpos($user->img_url, 'profile/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{asset('storage/' . $user->img_url)}}">
+                    @else
+                        <img class="profile__img" accept="image/*" src="/images/icon/no_image.jpg">
+                    @endif
                     <input class="profile__upload-btn" type="file" name="profile_img" accept=".jpg, .jpeg, .png, .gif">
                 </div>    
                 <div class="register__form-content">
