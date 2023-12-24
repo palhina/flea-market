@@ -12,7 +12,13 @@
     <div class="item-detail__wrapper">
         <div class="item__contents">
             <div class="item__contents-img">
-                <img class="item__img" src="{{ $item->img_url }}">
+                @if (strpos($item->img_url, '/images/item/') === 0)
+                    <img class="item__img" src="{{ $item->img_url }}">
+                @elseif (strpos($item->img_url, 'item/') === 0)
+                    <img class="item__img" src="{{asset('storage/' . $item->img_url)}}">
+                @else
+                    <img class="item__img" src="/images/icon/no_image.jpg">
+                @endif
             </div>
         </div>
         <div class="item__contents-detail">

@@ -10,6 +10,9 @@ use App\Models\Comment;
 use App\Models\Address;
 use App\Models\Payment;
 use App\Models\SoldItem;
+use App\Models\Category;
+use App\Models\Condition;
+
 
 class ItemController extends Controller
 {
@@ -64,8 +67,31 @@ class ItemController extends Controller
     // 出品ページ表示
     public function list()
     {
-       
-        return view('sell_item');
+        $user = Auth::user();
+        $categories = Category::all();
+        $conditions = Condition::all();
+        return view('sell_item',compact('user','categories','conditions'));
+    }
+
+    // 出品処理
+    public function sell(Request $request,$id)
+    {
+        $userId = Auth::id();
+        $filename=$request->item_img->getClientOriginalName();
+        $img=$request->item_img->storeAs('item',$filename,'public');
+
+        Item::create([
+            'user_id' => $userId,
+            'item_category_id' => $request->input('category_name'),
+            'condition_id' => $request->input('condition_name'),
+            'img_url' => $img,
+            'item_name' => $request->input('name'),
+            'description' => $request->input('comment'),
+            'price' => $request->input('price'),
+        ]);
+
+        $items=Item::all();
+        return view('items_recommend',compact('items'));
     }
 
     // 検索結果表示(商品名、カテゴリー名、商品説明で検索可能)

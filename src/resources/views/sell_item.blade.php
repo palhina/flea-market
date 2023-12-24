@@ -13,7 +13,7 @@
         <div class="sell-item__group-title">
             <h1>商品の出品</h1>
         </div>
-        <form class="form" action="" method="post">
+        <form class="form" action="/sell/{$user->id}" method="post" enctype="multipart/form-data">
         @csrf  
             <div class="sell-item__content">
                 <div class="sell-item__group">
@@ -30,18 +30,24 @@
                     </div>
                     <div class="form__input">
                         <p class="form__ttl">カテゴリー</p>
-                        <div class="form__category">
-                            <input class="form__text" type="text" name="name" value="{{ old('name') }}" />
-                        </div>
+                        <select class="form__category" name="category_name">
+                            <option value="">カテゴリーを選択</option>
+                            @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            @endforeach   
+                        </select>
                         <div class="form__error">
                             <!-- errors->first('email') -->
                         </div>
                     </div>
                     <div class="form__input">
                         <p class="form__ttl">商品の状態</p>
-                        <div class="form__category">
-                            <input class="form__text" type="text" name="name" value="{{ old('name') }}" />
-                        </div>
+                        <select class="form__category" name="condition_name">
+                            <option value="">状態を選択</option>
+                            @foreach($conditions as $condition)
+                            <option value="{{ $condition->id }}">{{ $condition->condition_name }}</option>
+                            @endforeach   
+                        </select>
                         <div class="form__error">
                             <!-- errors->first('email') -->
                         </div>
@@ -63,7 +69,7 @@
                     <div class="form__input">
                         <p class="form__ttl">商品の説明</p>
                         <div class="form__category">
-                            <textarea class="form__comment" col="50" name="comment"></textarea>
+                            <textarea class="form__comment" col="50" name="comment" value="{{ old('comment') }}"></textarea>
                         </div>
                         <div class="form__error">
                             <!-- errors->first('email') -->
@@ -77,7 +83,7 @@
                     <div class="form__input">
                         <p class="form__ttl">販売価格</p>
                         <div class="form__category">
-                            <input class="form__text" type="text" name="name" value="{{ old('name') }}" />
+                            <input class="form__text" type="text" name="price" value="{{ old('price') }}" />
                         </div>
                         <div class="form__error">
                             <!-- errors->first('email') -->

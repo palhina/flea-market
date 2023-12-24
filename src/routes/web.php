@@ -28,8 +28,9 @@ Route::middleware('auth')->group(function (){
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/item/favorite', [ItemController::class, 'favorite']);
     Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
-    Route::post('/purchase', [ItemController::class, 'getItem']);
+    Route::post('/purchase/{id}', [ItemController::class, 'getItem']);
     Route::get('/sell', [ItemController::class, 'list']);
+    Route::post('/sell/{id}', [ItemController::class, 'sell']);
 
     Route::post('/favorite_add/{id}', [FavoriteController::class, 'addFavorite']);
     Route::delete('/favorite_delete/{id}', [FavoriteController::class, 'deleteFavorite']);

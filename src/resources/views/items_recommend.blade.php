@@ -28,7 +28,13 @@
         <div class="item-all__card">
             <form class="form" action="/item/{{$item->id}}" method="get">
                 @csrf
-                <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
+                @if (strpos($item->img_url, '/images/item/') === 0)
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
+                @elseif (strpos($item->img_url, 'item/') === 0)
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{asset('storage/' . $item->img_url)}}" />
+                @else
+                    <input class="card__img" type="image" id="image" alt="Item" src="/images/icon/no_image.jpg" />
+                @endif
             </form>
         </div>
         @endforeach
