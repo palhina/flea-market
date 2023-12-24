@@ -41,9 +41,32 @@ class ProfileController extends Controller
         return view('buy_item',compact('item','userAddress'));
     }
 
+    // プロフィール編集画面表示
     public function editAddress()
     {
-        return view('edit_profile');
+        $user = Auth::user();
+        $address = Address::where('user_id',$user->id)->first();
+        return view('edit_profile',compact('user','address'));
+    }
+
+    // プロフィール編集処理
+    public function postEditAddress(Request $request, $id)
+    {
+        $user = Auth::user();
+        $address = Address::find($id);
+        $filename=$request->profile_img->getClientOriginalName();
+        $img=$request->profile_img->storeAs('profile',$filename,'public');
+
+        $user->name = $request->input('name');
+        $user->img_url = $img;
+        $address->postcode = $request->input('postcode');
+        $address->address = $request->input('address');
+        $address->building = $request->input('building');
+
+        $user->save();
+
+        $address->save();
+        return view('edit_profile',compact('user','address'));
     }
 
     public function soldItem()

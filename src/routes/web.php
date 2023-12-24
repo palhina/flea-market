@@ -37,9 +37,10 @@ Route::middleware('auth')->group(function (){
     Route::get('/comment/{id}', [CommentController::class, 'comment']);
     Route::post('/comment/{id}', [CommentController::class, 'commentTo']);
 
-    Route::get('/address/{id}', [ProfileController::class, 'address']);
-    Route::post('/address/{id}', [ProfileController::class, 'createAddress']);
-    Route::get('/purchase/address/{id}', [ProfileController::class, 'editAddress']);
+    Route::get('/purchase/address/{id}', [ProfileController::class, 'address']);
+    Route::post('/purchase/address/{id}', [ProfileController::class, 'createAddress']);
+    Route::get('/mypage/profile/{id}', [ProfileController::class, 'editAddress']);
+    Route::put('/mypage/profile/{id}', [ProfileController::class, 'postEditAddress']);
     Route::get('/mypage', [ProfileController::class, 'soldItem']);
     Route::get('/mypage/buy', [ProfileController::class, 'boughtItem']);
 
