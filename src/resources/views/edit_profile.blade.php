@@ -17,7 +17,7 @@
                 @csrf
                 @method('PUT')
                 <div class="register__profile">
-                    @if (strpos($user->img_url, '/images/') === 0)
+                    @if (strpos($user->img_url, '/images/profile/') === 0)
                         <img class="profile__img" accept="image/*" src="{{ $user->img_url }}">
                     @elseif (strpos($user->img_url, 'profile/') === 0)
                         <img class="profile__img" accept="image/*" src="{{asset('storage/' . $user->img_url)}}">
