@@ -37,11 +37,16 @@ class ItemController extends Controller
     // 商品詳細ページ表示
     public function detail($id)
     {
+        $user = Auth::user();
+        $userId = $user->id;
         $item = Item::find($id);
+        $item->isFavorite = Favorite::isFavorite($item->id, $userId)->exists();
+        $favorites = Favorite::where('user_id',$user->id)->get();
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $commentCount = Comment::where('item_id', $item->id)->count();
         $categories = $item->itemCategories()->with('category')->get();
-        return view('item_detail',compact('item','categories','favoriteCount','commentCount'));
+
+        return view('item_detail',compact('item','categories','favorites','favoriteCount','commentCount'));
     }
 
     // 購入ページ表示

@@ -31,7 +31,22 @@
             <h2 class="item__contents-price">￥{{ $item->price }}</h2>
             <div class="item__contents-rating">
                 <div class="item__rating">
-                    <img src="/images/icon/star-fav.png" alt="favorite">
+                    @if ($item->isFavorite)   
+                        <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="fav-btn__favorite" type="submit">
+                                <img class="rating__fav-icon" alt="favorite" src="/images/icon/star-fav.png" />
+                            </button>
+                        </form>
+                    @else
+                        <form  class="fav__add" method="post" action="/favorite_add/{{ $item->id }}">
+                            @csrf
+                            <button class="fav-btn__not" type="submit">
+                                <img class="rating__fav-icon" alt="notFavorite" src="/images/icon/star.png" />
+                            </button>
+                        </form>
+                    @endif
                     <p class="item__fav-number">{{ $favoriteCount }}</p>
                 </div>
                 <div class="item__rating">

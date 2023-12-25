@@ -27,7 +27,7 @@
             <div class="item__contents-rating">
                 <div class="item__fav-add">
                     @if ($item->isFavorite)   
-                        <form class="fav__delete" method="post" action="/favorite_delete/{{ $favorites->firstWhere('item_id', $item->id)->id }}">
+                        <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
                             @method('DELETE')
                             @csrf
                             <button class="fav-btn__favorite" type="submit">

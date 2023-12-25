@@ -18,17 +18,14 @@ class CommentController extends Controller
     {
         $user = Auth::user();
         $item = Item::find($id);
+        $item->isFavorite = Favorite::isFavorite($item->id, $user->id)->exists();
 
-        $userId = Auth::user()->id;
-        $favorites =  Favorite::where('user_id',$userId)->get();
         $categories = $item->itemCategories()->with('category')->get();
-        
-        $favoriteCount = Favorite::where('item_id', $item->id)->count();
-        
+        $favoriteCount = Favorite::where('item_id', $item->id)->count();       
         $comments = Comment::where('item_id', $item->id)->with('user')->get();
         $commentCount = $comments->count();
 
-        return view('comment', compact('item','favorites','categories','favoriteCount','commentCount','comments'));
+        return view('comment', compact('item','categories','favoriteCount','commentCount','comments'));
     }
 
     // コメント送信機能
@@ -41,14 +38,13 @@ class CommentController extends Controller
             'item_id' => $item->id,
             'comment' => $request->input('comment'),
         ]);
+
+        $item->isFavorite = Favorite::isFavorite($item->id, $user->id)->exists();
         $categories = $item->itemCategories()->with('category')->get();
-        
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
-
         $comments = Comment::where('item_id', $item->id)->with('user')->get();
-        $commentCount = $comments->count();
-        
+        $commentCount = $comments->count();   
 
-        return view('comment', compact('item','categories','favoriteCount','commentCount','comments'))->with('result', 'コメントを送信しました');
+        return view('comment', compact('item','categories','favoriteCount','commentCount','comments'));
     }
 }
