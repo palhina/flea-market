@@ -25,7 +25,7 @@ class AuthController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return view('auth.login')->with('result', '新規登録に成功しました');
+        return redirect('/login')->with('result', '新規登録に成功しました');
     }
 
     // ユーザーログインページ表示
@@ -38,9 +38,9 @@ class AuthController extends Controller
     public function postLogin(LoginRequest $request)
     {
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect('/');
+            return redirect('/')->with('result', 'ログインしました');
         } else {
-            return view('auth.login')->with('result', 'メールアドレスまたはパスワードが違います');
+            return redirect('/login')->with('result', 'メールアドレスまたはパスワードが違います');
         }
     }
 

@@ -9,10 +9,11 @@
 }
 
 .profile__img {
-    height: 150px
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
 }
-
-input[type="file"] {}
 
 .form__input {
     margin: 50px 0;
@@ -22,7 +23,7 @@ input[type="file"] {}
     font-weight: bold;
 }
 
-input[type="text"] {
+.form__text {
     border: 2px solid #909090;
     margin: 0;
     padding: 10px;

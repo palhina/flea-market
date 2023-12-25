@@ -23,6 +23,11 @@
                     <input class="form__img"  type="file" name="item_img" accept="image/jpeg, image/png">
                 </div>
             </div>
+            <div class="form__error">
+                @if ($errors->has('item_img'))
+                    {{$errors->first('item_img')}}
+                @endif
+            </div>
             <div class="sell-item__content">
                 <div class="sell-title__form-content">
                     <div class="sell-item__group-detail">
@@ -37,7 +42,9 @@
                             @endforeach   
                         </select>
                         <div class="form__error">
-                            <!-- errors->first('email') -->
+                            @if ($errors->has('category_name'))
+                                {{$errors->first('category_name')}}
+                            @endif
                         </div>
                     </div>
                     <div class="form__input">
@@ -49,7 +56,9 @@
                             @endforeach   
                         </select>
                         <div class="form__error">
-                            <!-- errors->first('email') -->
+                            @if ($errors->has('condition_name'))
+                                {{$errors->first('condition_name')}}
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -63,17 +72,21 @@
                             <input class="form__text" type="text" name="name" value="{{ old('name') }}" />
                         </div>
                         <div class="form__error">
-                            <!-- errors->first('email') -->
+                            @if ($errors->has('name'))
+                                {{$errors->first('name')}}
+                            @endif
                         </div>
                     </div>
                     <div class="form__input">
                         <p class="form__ttl">商品の説明</p>
                         <div class="form__category">
-                            <textarea class="form__comment" col="50" name="comment" value="{{ old('comment') }}"></textarea>
+                            <textarea class="form__comment" col="50" name="comment">{{ old('comment') }}</textarea>
                         </div>
                         <div class="form__error">
-                            <!-- errors->first('email') -->
-                        </div>
+                            @if ($errors->has('comment'))
+                                {{$errors->first('comment')}}
+                            @endif
+                        </div>                       
                     </div>
                 </div>
                 <div class="sell-title__form-content">
@@ -86,7 +99,9 @@
                             <input class="form__text" type="text" name="price" value="{{ old('price') }}" />
                         </div>
                         <div class="form__error">
-                            <!-- errors->first('email') -->
+                            @if ($errors->has('price'))
+                                {{$errors->first('price')}}
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,11 @@
+.flash_message {
+    color: black;
+    background-color:aliceblue;
+    padding: 20px;
+    text-align: center;
+    margin: 50px auto;
+}
+
 .item-list__wrapper {
     border-bottom: 1px solid #000;
     margin: 20px 0;

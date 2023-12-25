@@ -35,6 +35,14 @@
     margin: 0 30px;
 }
 
+.fav-btn__favorite,
+.fav-btn__not,
+.comment-btn {
+    background-color: #FFF;
+    border: none;
+    cursor: pointer;
+}
+
 .item__rate-comment {
     margin-top: 30px;
 }
@@ -70,6 +78,10 @@
 
 .rate__comments {
     background-color: #D9D9D9;
+}
+
+.form__error{
+    color: #FF5555;
 }
 
 .item__rate-btn {

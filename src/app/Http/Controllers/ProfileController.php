@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddressRequest;
 use App\Models\Item;
 use App\Models\Address;
 use App\Models\Favorite;
@@ -28,7 +29,7 @@ class ProfileController extends Controller
     }
 
     // 住所登録処理
-    public function createAddress(Request $request,$id)
+    public function createAddress(AddressRequest $request,$id)
     {
         $user = Auth::user();
         Address::create([
@@ -59,22 +60,25 @@ class ProfileController extends Controller
     }
 
     // プロフィール編集処理
-    public function postEditAddress(Request $request, $id)
+    public function postEditAddress(AddressRequest $request, $id)
     {
         $user = Auth::user();
         $address = Address::find($id);
+        
+        if ($request->hasFile('profile_img')){
         $filename=$request->profile_img->getClientOriginalName();
         $img=$request->profile_img->storeAs('profile',$filename,'public');
+        $user->img_url = $img;
+        }
 
         $user->name = $request->input('name');
-        $user->img_url = $img;
         $address->postcode = $request->input('postcode');
         $address->address = $request->input('address');
         $address->building = $request->input('building');
 
         $user->save();
         $address->save();
-        return view('edit_profile',compact('user','address'));
+        return redirect('/')->with('result', 'プロフィールが更新されました');
     }
 
     public function soldItem()

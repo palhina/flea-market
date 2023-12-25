@@ -9,14 +9,20 @@
     padding: 20px;
 }
 
+.flash_message{
+    color: black;
+    background-color: #fee;
+    padding: 20px;
+    text-align: center;
+}
+
 .form__email-input,
 .form__pwd-input {
     margin: 50px auto;
 
 }
 
-input[type="email"],
-input[type="password"] {
+.form__text {
     border: 2px solid #909090;
     margin: 0;
     padding: 10px;

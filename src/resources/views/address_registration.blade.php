@@ -22,7 +22,9 @@
                         <input type="text" name="postcode" value="{{ old('postcode') }}" />
                     </div>
                     <div class="form__error">
-                        <!-- errors->first('email') -->
+                        @if ($errors->has('postcode'))
+                            {{$errors->first('postcode')}}
+                        @endif
                     </div>
                 </div>
                 <div class="form__input">
@@ -31,7 +33,9 @@
                         <input type="text" name="address" value="{{ old('address') }}"/>
                     </div>
                     <div class="form__error">
-                        <!-- error message -->
+                        @if ($errors->has('address'))
+                            {{$errors->first('address')}}
+                        @endif
                     </div>
                 </div>
                 <div class="form__input">
@@ -40,7 +44,9 @@
                         <input type="text" name="building" />
                     </div>
                     <div class="form__error">
-                        <!-- error message -->
+                        @if ($errors->has('building'))
+                            {{$errors->first('building')}}
+                        @endif
                     </div>
                 </div>
                 <div class="form__button">

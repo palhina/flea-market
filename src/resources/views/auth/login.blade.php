@@ -10,7 +10,7 @@
             <h1>ログイン</h1>
         </div>
         
-        @if (session('result'))
+        @if(session('result'))
         <div class="flash_message">
             {{ session('result') }}
         </div>
@@ -22,7 +22,7 @@
                 <div class="form__email-input">
                     <p class="form__ttl">メールアドレス</p>
                     <div class="form__email-text">
-                        <input type="email" name="email" value="{{ old('email') }}"/>
+                        <input class="form__text" type="email" name="email" value="{{ old('email') }}"/>
                     </div>
                     <div class="form__error">
                         {{$errors->first('email')}}
@@ -31,7 +31,7 @@
                 <div class="form__pwd-input">
                     <div class="form__pwd-text">
                         <p class="form__ttl">パスワード</p>
-                        <input type="password" name="password"/>
+                        <input class="form__text" type="password" name="password"/>
                     </div>
                     <div class="form__error">
                         {{$errors->first('password')}}

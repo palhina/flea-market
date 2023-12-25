@@ -9,7 +9,13 @@
 @endsection
 
 @section('content')
-   <div class="item-list__wrapper">
+    @if(session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+    @endif
+    
+    <div class="item-list__wrapper">
         <div class="item-all__list">
             <form class="form" action="/" method="get">
                 @csrf

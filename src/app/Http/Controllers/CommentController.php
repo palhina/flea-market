@@ -32,8 +32,7 @@ class CommentController extends Controller
     }
 
     // コメント送信機能
-    public function commentTo(Request $request,$id)
-    // バリデーション付けたらRequest部分変更
+    public function commentTo(CommentRequest $request,$id)
     {
         $user = Auth::user();
         $item = Item::find($id);

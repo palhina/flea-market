@@ -33,6 +33,11 @@
                         </label>
                     </div>
                     @endforeach
+                    <div class="form__error">
+                        @if ($errors->has('payment'))
+                            {{$errors->first('payment')}}
+                        @endif 
+                    </div>
                 </div>
                 <div class="item__contents-address">
                     <div class="item__purchase-address">
@@ -45,7 +50,7 @@
                     @if($userAddress)
                         <div class="item__contents-address">
                             <label>
-                                <input type="radio" name="selected_address" value="{{ $userAddress->id }}" required>
+                                <input type="radio" name="address" value="{{ $userAddress->id }}" required>
                                 <div class="user__address">
                                 <p>〒{{ $userAddress->postcode }}</p>
                                 <p>{{ $userAddress->address }}</p>
@@ -56,6 +61,11 @@
                     @else
                         <p>住所は登録されていません。</p>
                     @endif
+                    <div class="form__error">
+                        @if ($errors->has('address'))
+                            {{$errors->first('address')}}
+                        @endif 
+                    </div>
                 </div>
             </div>
             <div class="item__pay-wrapper">

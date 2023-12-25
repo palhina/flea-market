@@ -30,7 +30,7 @@
                     <div class="form__input">
                         <p class="form__ttl">ユーザー名</p>
                         <div class="form__name">
-                            <input type="text" name="name" value="{{ $user->name }}" />
+                            <input class="form__text" type="text" name="name" value="{{ $user->name }}" />
                         </div>
                         <div class="form__error">
                             @if ($errors->has('name'))
@@ -41,7 +41,7 @@
                     <div class="form__input">
                         <p class="form__ttl">郵便番号</p>
                         <div class="form__postcode">
-                            <input type="text" name="postcode" value="@if($address !==null){{ $address->postcode }}@endif" />
+                            <input class="form__text" type="text" name="postcode" value="@if($address !==null){{ $address->postcode }}@endif" />
                         </div>
                         <div class="form__error">
                             @if ($errors->has('postcode'))
@@ -52,7 +52,7 @@
                     <div class="form__input">
                         <div class="form__address">
                             <p class="form__ttl">住所</p>
-                            <input type="text" name="address" value="@if($address !==null){{ $address->address }}@endif"/>
+                            <input class="form__text" type="text" name="address" value="@if($address !==null){{ $address->address }}@endif"/>
                         </div>
                         <div class="form__error">
                             @if ($errors->has('address'))
@@ -63,7 +63,7 @@
                     <div class="form__input">
                         <div class="form__building">
                             <p class="form__ttl">建物名</p>
-                            <input type="text" name="building"  value="@if($address !==null){{ $address->building }}@endif"/>
+                            <input class="form__text" type="text" name="building"  value="@if($address !==null){{ $address->building }}@endif"/>
                         </div>
                         <div class="form__error">
                             @if ($errors->has('building'))

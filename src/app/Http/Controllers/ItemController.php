@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ItemRequest;
+use App\Http\Requests\ShoppingRequest;
 use App\Models\Item;
 use App\Models\Favorite;
 use App\Models\Comment;
@@ -53,7 +55,7 @@ class ItemController extends Controller
     }
 
     // 商品購入処理
-    public function getItem(Request $request,$id)
+    public function getItem(ShoppingRequest $request,$id)
     {
         $item = Item::find($id);
         $user = Auth::user();
@@ -74,7 +76,7 @@ class ItemController extends Controller
     }
 
     // 出品処理
-    public function sell(Request $request,$id)
+    public function sell(ItemRequest $request,$id)
     {
         $userId = Auth::id();
         $filename=$request->item_img->getClientOriginalName();
@@ -90,8 +92,7 @@ class ItemController extends Controller
             'price' => $request->input('price'),
         ]);
 
-        $items=Item::all();
-        return view('items_recommend',compact('items'));
+        return redirect('/')->with('result','出品処理が完了しました');
     }
 
     // 検索結果表示(商品名、カテゴリー名、商品説明で検索可能)

@@ -35,7 +35,12 @@
                     <p class="item__fav-number">{{ $favoriteCount }}</p>
                 </div>
                 <div class="item__rating">
-                    <img src="/images/icon/comment.png" alt="comment">
+                    <form  class="item__comment" method="get" action="/comment/{{$item->id}}">
+                        @csrf
+                        <button class="comment-btn" type="submit">
+                            <img class="rating__comment-icon" alt="Comment" src="/images/icon/comment.png" />
+                        </button>
+                    </form>
                     <p class="item__fav-number">{{ $commentCount }}</p>
                 </div>
             </div>
