@@ -13,10 +13,23 @@
         <div class ="item__profile">
             <div class="item__profile--content">
                 <div class="item__profile--img">
-                    <img class="profile__img" id="img" accept="image/*" src="https://tool-engineer.work/wp-content/uploads/2022/06/default.png">
+                    @if (strpos($user->img_url, '/images/profile/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{ $user->img_url }}">
+                    @elseif (strpos($user->img_url, 'profile/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{asset('storage/' . $user->img_url)}}">
+                    @else
+                        <img class="profile__img" accept="image/*" src="/images/icon/no_image.jpg">
+                    @endif
                 </div>    
                 <div class="item__profile-data">
-                    <p class="form__ttl">{{ $user->name }}様</p>
+                    <p class="form__ttl">
+                        @if($user->name !== null)
+                        {{ $user->name }}様
+                        @else
+                        ユーザー名が未入力です
+                        @endif
+                    </p>
+
                 </div>
             </div>
             <div class="item__profile-edit">
@@ -45,7 +58,13 @@
             <div class="item-all__card">
                 <form class="form" action="/item/{{ $item->id}}" method="get">
                     @csrf
-                    <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
+                    @if (strpos($item->img_url, '/images/item/') === 0)
+                        <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
+                    @elseif (strpos($item->img_url, 'item/') === 0)
+                        <input class="card__img" type="image" id="image" alt="Item" src="{{asset('storage/' . $item->img_url)}}" />
+                    @else
+                        <input class="card__img" type="image" id="image" alt="Item" src="/images/icon/no_image.jpg" />
+                    @endif
                 </form>
             </div>
             @endforeach

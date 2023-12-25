@@ -12,7 +12,7 @@
     <div class="error__contents">
         <h1>error</h1>
         <p>既に住所は登録されています</p>
-        <form  class="form" action="/purchase/address/{{ $user->id }}" method="get">
+        <form  class="form" action="/mypage/profile/{{ $user->id }}" method="get">
             <button class="address__edit-btn" type="submit">住所変更はこちらから</button>
         </form>
     </div>

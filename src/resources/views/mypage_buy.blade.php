@@ -13,10 +13,22 @@
         <div class ="item__profile">
             <div class="item__profile--content">
                 <div class="item__profile--img">
-                    <img class="profile__img" id="img" accept="image/*" src="https://tool-engineer.work/wp-content/uploads/2022/06/default.png">
+                    @if (strpos($user->img_url, '/images/profile/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{ $user->img_url }}">
+                    @elseif (strpos($user->img_url, 'profile/') === 0)
+                        <img class="profile__img" accept="image/*" src="{{asset('storage/' . $user->img_url)}}">
+                    @else
+                        <img class="profile__img" accept="image/*" src="/images/icon/no_image.jpg">
+                    @endif
                 </div>    
                 <div class="item__profile-data">
-                    <p class="form__ttl">{{ $user->name }}様</p>
+                    <p class="form__ttl">
+                        @if($user->name !== null)
+                        {{ $user->name }}様
+                        @else
+                        ユーザー名が未入力です
+                        @endif
+                    </p>
                 </div>
             </div>
             <div class="item__profile-edit">

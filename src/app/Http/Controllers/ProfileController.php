@@ -13,6 +13,7 @@ use App\Models\Payment;
 
 class ProfileController extends Controller
 {
+    // 住所登録ページ表示
     public function address()
     {
         $user = Auth::user();
@@ -26,6 +27,7 @@ class ProfileController extends Controller
         }
     }
 
+    // 住所登録処理
     public function createAddress(Request $request,$id)
     {
         $user = Auth::user();
@@ -36,19 +38,24 @@ class ProfileController extends Controller
             'building' => $request['building'],
         ]);
 
-        $item = Item::find($id);
-        $userId = Auth::id();
-        $userAddress = Address::addressByUser($userId);
-        $payments = Payment::all();
-        return view('buy_item',compact('item','userAddress','payments'));
+        $items = Item::all();
+        return view('items_recommend',compact('items'));
     }
 
     // プロフィール編集画面表示
     public function editAddress()
     {
         $user = Auth::user();
-        $address = Address::where('user_id',$user->id)->first();
-        return view('edit_profile',compact('user','address'));
+        $userId = Auth::id();
+        $userAddress = Address::addressByUser($userId);
+        if($userAddress)
+        {
+            $address = Address::where('user_id',$user->id)->first();
+            return view('edit_profile',compact('user','address'));
+        }
+        else{
+            return view('address_registration',compact('user'));
+        }
     }
 
     // プロフィール編集処理
@@ -66,7 +73,6 @@ class ProfileController extends Controller
         $address->building = $request->input('building');
 
         $user->save();
-
         $address->save();
         return view('edit_profile',compact('user','address'));
     }

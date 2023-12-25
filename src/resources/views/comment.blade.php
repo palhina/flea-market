@@ -17,7 +17,13 @@
         @endif
         <div class="item__contents">
             <div class="item__contents-img">
-                <img class="item__img" src="{{ $item->img_url }}">
+                @if (strpos($item->img_url, '/images/item/') === 0)
+                    <img class="item__img" src="{{ $item->img_url }}">
+                @elseif (strpos($item->img_url, 'item/') === 0)
+                    <img class="item__img" src="{{asset('storage/' . $item->img_url)}}">
+                @else
+                    <img class="item__img" src="/images/icon/no_image.jpg">
+                @endif
             </div>
         </div>
         <div class="item__contents-detail">
@@ -33,17 +39,25 @@
                     <p class="item__fav-number">{{ $commentCount }}</p>
                 </div>
             </div>
-            <!-- atforeach -->
+
+            @foreach($comments as $singleComment)
             <div class="item__rate-comment">
-                <div class="rate__profile">
-                    <img class="rate__profile-photo" src="" alt="profile">
-                    <p class="rate__profile-name">名前</p>
+                <div class="@if($singleComment->user->id === Auth::user()->id) rate__profile-user @else rate__profile @endif">
+                    @if (strpos($singleComment->user->img_url, '/images/profile/') === 0)
+                        <img class="rate__profile-photo" accept="image/*" src="{{ $singleComment->user->img_url }}">
+                    @elseif (strpos($singleComment->user->img_url, 'profile/') === 0)
+                        <img class="rate__profile-photo" accept="image/*" src="{{asset('storage/' . $singleComment->user->img_url)}}">
+                    @else
+                        <img class="rate__profile-photo" accept="image/*" src="/images/icon/no_image.jpg">
+                    @endif
+                    <p class="rate__profile-name">{{ $singleComment->user->name }}</p>
                 </div>
                 <div class="rate__comments">
-                    <p>コメント</p>
+                    <p>{{ $singleComment->comment }}</p>
                 </div>
             </div>
-            <!-- endforeach -->
+            @endforeach
+
             <form class="item__contents-rate" action="/comment/{{$item->id}}" method="post">
                 @csrf
                 <p>商品へのコメント</p>

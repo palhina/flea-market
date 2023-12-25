@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\User;
 use App\Models\Favorite;
 use App\Models\Comment;
 use App\Http\Requests\CommentRequest;
@@ -12,6 +13,7 @@ use App\Http\Requests\CommentRequest;
 
 class CommentController extends Controller
 {
+    // コメントページ表示
     public function comment($id)
     {
         $user = Auth::user();
@@ -21,13 +23,15 @@ class CommentController extends Controller
         $favorites =  Favorite::where('user_id',$userId)->get();
         $categories = $item->itemCategories()->with('category')->get();
         
-        // マイリスト登録数をカウント
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
-        $commentCount = Comment::where('item_id', $item->id)->count();
+        
+        $comments = Comment::where('item_id', $item->id)->with('user')->get();
+        $commentCount = $comments->count();
 
-        return view('comment', compact('item','favorites','categories','favoriteCount','commentCount'));
+        return view('comment', compact('item','favorites','categories','favoriteCount','commentCount','comments'));
     }
 
+    // コメント送信機能
     public function commentTo(Request $request,$id)
     // バリデーション付けたらRequest部分変更
     {
@@ -40,10 +44,12 @@ class CommentController extends Controller
         ]);
         $categories = $item->itemCategories()->with('category')->get();
         
-        // マイリスト登録数をカウント
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
-        $commentCount = Comment::where('item_id', $item->id)->count();
 
-        return view('comment', compact('item','categories','favoriteCount','commentCount'))->with('result', 'コメントを送信しました');
+        $comments = Comment::where('item_id', $item->id)->with('user')->get();
+        $commentCount = $comments->count();
+        
+
+        return view('comment', compact('item','categories','favoriteCount','commentCount','comments'))->with('result', 'コメントを送信しました');
     }
 }
