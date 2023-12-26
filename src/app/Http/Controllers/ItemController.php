@@ -38,15 +38,16 @@ class ItemController extends Controller
     public function detail($id)
     {
         $user = Auth::user();
-        $userId = $user->id;
         $item = Item::find($id);
-        $item->isFavorite = Favorite::isFavorite($item->id, $userId)->exists();
-        $favorites = Favorite::where('user_id',$user->id)->get();
+        if($user !== null)
+        {
+            $item->isFavorite = Favorite::isFavorite($item->id, $user->id)->exists();
+        }  
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $commentCount = Comment::where('item_id', $item->id)->count();
         $categories = $item->itemCategories()->with('category')->get();
 
-        return view('item_detail',compact('item','categories','favorites','favoriteCount','commentCount'));
+        return view('item_detail',compact('item','categories','favoriteCount','commentCount'));
     }
 
     // 購入ページ表示
@@ -67,8 +68,9 @@ class ItemController extends Controller
         SoldItem::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
+            'payment_id' => $request->input('payment')
         ]);
-        return view('buy_item');
+        return redirect('/')->with('result','商品を購入しました');
     }
 
     // 出品ページ表示
@@ -105,14 +107,16 @@ class ItemController extends Controller
     {
         $keyword = $request->input('keyword');
         $items = Item::query()
-        ->where(function ($query) use ($keyword) {
-            $query->where('item_name', 'LIKE', '%' . $keyword . '%')
-            ->orWhere('description', 'LIKE', '%' . $keyword . '%');
-        })
-        ->orWhereHas('itemCategories.category', function ($query) use ($keyword) {
-            $query->where('category_name', 'LIKE', '%' . $keyword . '%');
-        })
-        ->get();
+            ->where(function ($query) use ($keyword)
+            {
+                $query->where('item_name', 'LIKE', '%' . $keyword . '%')
+                ->orWhere('description', 'LIKE', '%' . $keyword . '%');
+            })
+            ->orWhereHas('itemCategories.category', function ($query) use ($keyword) 
+            {
+                $query->where('category_name', 'LIKE', '%' . $keyword . '%');
+            })
+            ->get();
         return view('items_recommend',compact('items'));
     }
 }

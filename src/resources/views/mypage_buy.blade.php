@@ -53,14 +53,20 @@
             </div>
         </div>
         <div class="item-all">
-            <!-- atforeach  -->
+            @foreach($soldItems as $soldItem) 
             <div class="item-all__card">
-                <form class="form" action="" method="get">
-                    <!-- csrf -->
-                    <input class="card__img" type="image" id="image" alt="Item" src="sushi.jpg" />
+                <form class="form" action="/item/{{ $soldItem->item->id}}" method="get">
+                    @csrf
+                    @if (strpos($soldItem->item->img_url, '/images/item/') === 0)
+                        <input class="card__img" type="image" id="image" alt="Item" src="{{ $soldItem->item->img_url }}" />
+                    @elseif (strpos($soldItem->item->img_url, 'item/') === 0)
+                        <input class="card__img" type="image" id="image" alt="Item" src="{{asset('storage/' . $soldItem->item->img_url)}}" />
+                    @else
+                        <input class="card__img" type="image" id="image" alt="Item" src="/images/icon/no_image.jpg" />
+                    @endif
                 </form>
             </div>
-            <!-- endforeach -->
+            @endforeach
         </div>
     </div>
 @endsection

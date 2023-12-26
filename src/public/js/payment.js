@@ -1,7 +1,17 @@
 function updatePaymentMethod(selectedRadio) {
-    // テーブルの支払い方法のセルを取得
     var paymentCell = document.getElementById('selectedPayment');
+    var paymentMethod = '';
 
-    // 選択された支払い方法をテーブルに反映
-    paymentCell.textContent = selectedRadio.value;
+    switch (selectedRadio.value) {
+        case '1':
+            paymentMethod = 'コンビニ払い';
+            break;
+        case '2':
+            paymentMethod = '代金引換';
+            break;
+        default:
+            paymentMethod = '未選択';
+            break;
+    }    
+    paymentCell.textContent = paymentMethod;
 }

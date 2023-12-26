@@ -10,7 +10,7 @@ use App\Models\Address;
 use App\Models\Favorite;
 use App\Models\Comment;
 use App\Models\Payment;
-
+use App\Models\SoldItem;
 
 class ProfileController extends Controller
 {
@@ -39,8 +39,7 @@ class ProfileController extends Controller
             'building' => $request['building'],
         ]);
 
-        $items = Item::all();
-        return view('items_recommend',compact('items'));
+        return redirect('/')->with('result','住所を登録しました');
     }
 
     // プロフィール編集画面表示
@@ -65,10 +64,11 @@ class ProfileController extends Controller
         $user = Auth::user();
         $address = Address::find($id);
         
-        if ($request->hasFile('profile_img')){
-        $filename=$request->profile_img->getClientOriginalName();
-        $img=$request->profile_img->storeAs('profile',$filename,'public');
-        $user->img_url = $img;
+        if ($request->hasFile('profile_img'))
+        {
+            $filename=$request->profile_img->getClientOriginalName();
+            $img=$request->profile_img->storeAs('profile',$filename,'public');
+            $user->img_url = $img;
         }
 
         $user->name = $request->input('name');
@@ -81,15 +81,19 @@ class ProfileController extends Controller
         return redirect('/')->with('result', 'プロフィールが更新されました');
     }
 
+    // マイページ(出品商品)表示
     public function soldItem()
     {
         $user = Auth::user();
         $items = Item::where('user_id',$user->id)->get();
         return view('mypage_sell',compact('user','items'));
     }
+
+    // マイページ(購入商品)表示
     public function boughtItem()
     {
         $user = Auth::user();
-        return view('mypage_buy',compact('user'));
+        $soldItems = SoldItem::where('user_id',$user->id)->get();
+        return view('mypage_buy',compact('user','soldItems'));
     }
 }

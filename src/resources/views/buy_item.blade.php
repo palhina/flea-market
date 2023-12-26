@@ -24,33 +24,36 @@
                         <p class="item__contents-price">￥{{$item->price}}</p>
                     </div>
                 </div>
-                <div class="item__contents-payment">
-                    <h2>支払方法</h2>
-                    @foreach($payments as $payment)
-                    <div class="item__payment-btn">
-                        <label>
-                            <input class="payment" type="radio" name="payment" value="{{ $payment->payment_method}}" onchange="updatePaymentMethod(this)" required>{{ $payment->payment_method }}
-                        </label>
+                <form action="/purchase/{{$item->id}}" method="post" id="form1">
+                @csrf
+                    <div class="item__contents-payment">
+                        <h2>支払方法</h2>
+                        @foreach($payments as $payment)
+                        <div class="item__payment-btn">
+                            <label>
+                                <input class="payment" type="radio" name="payment" value="{{ (string) $payment->id}}" onchange="updatePaymentMethod(this)" form="form1">{{ $payment->payment_method }}
+                            </label>
+                        </div>
+                        @endforeach
+                        <div class="form__error">
+                            @if ($errors->has('payment'))
+                                {{$errors->first('payment')}}
+                            @endif 
+                        </div>
                     </div>
-                    @endforeach
-                    <div class="form__error">
-                        @if ($errors->has('payment'))
-                            {{$errors->first('payment')}}
-                        @endif 
-                    </div>
-                </div>
+                </form>
                 <div class="item__contents-address">
                     <div class="item__purchase-address">
                         <h2>配送先</h2>
-                        <form action="/purchase/address/{{$item->id}}" method="get">
+                        <form action="/purchase/address/{{$item->id}}" method="get" id="form2">
                         @csrf
-                            <button class="item__pay-btn">変更する</button>
+                            <input class="item__pay-btn" type="submit" value="変更する" form="form2" />
                         </form>
                     </div>
                     @if($userAddress)
                         <div class="item__contents-address">
                             <label>
-                                <input type="radio" name="address" value="{{ $userAddress->id }}" required>
+                                <input type="radio" name="address" value="{{ $userAddress->id }}" form="form1">
                                 <div class="user__address">
                                 <p>〒{{ $userAddress->postcode }}</p>
                                 <p>{{ $userAddress->address }}</p>
@@ -85,11 +88,10 @@
                         </tr>
                     </table>
                 </div>
-                        <form action="/purchase/{{$item->id}}" method="post">
-                            @csrf
-                <button class="item__buy-btn" type="submit">購入する</button>
-        </form>
-
+                <form action="/purchase/{{$item->id}}" method="post" id="form1">
+                    @csrf
+                    <input class="item__buy-btn" type="submit" value="購入する" form="form1" />
+                </form>
             </div>
     </div>
 @endsection

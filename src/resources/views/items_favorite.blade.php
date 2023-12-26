@@ -27,8 +27,14 @@
         @foreach($favorites as $favorite)
         <div class="item-all__card">
             <form class="form" action="/item/{{$favorite->item->id}}" method="get">
-                @csrf
-                <input class="card__img" type="image" id="image" alt="Item" src="{{ $favorite->item->img_url }}" />
+            @csrf
+                @if (strpos($favorite->item->img_url, '/images/item/') === 0)
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{ $favorite->item->img_url }}" />
+                @elseif (strpos($favorite->item->img_url, 'item/') === 0)
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{asset('storage/' . $favorite->item->img_url)}}" />
+                @else
+                    <input class="card__img" type="image" id="image" alt="Item" src="/images/icon/no_image.jpg" />
+                @endif
             </form>
         </div>
         @endforeach
