@@ -23,7 +23,6 @@ class ItemController extends Controller
     public function index()
     {
         $items=Item::all();
-        // 余裕あればfavorite数順に並べ替え？
         return view('items_recommend',compact('items'));
     }
     
