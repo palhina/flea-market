@@ -41,6 +41,12 @@
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                             @endforeach   
                         </select>
+                        <select class="form__category" name="category_name2">
+                            <option value="">カテゴリーを選択(任意)</option>
+                            @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                            @endforeach   
+                        </select>
                         <div class="form__error">
                             @if ($errors->has('category_name'))
                                 {{$errors->first('category_name')}}

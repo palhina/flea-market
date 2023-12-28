@@ -25,6 +25,7 @@ class ItemRequest extends FormRequest
     {
         return [
             'item_img' => ['required'],
+            'category_name' => ['required'],
             'condition_name' => ['required'],
             'name' => ['required', 'string','max:191'],
             'comment' => ['required', 'string','max:2000'],
@@ -36,7 +37,7 @@ class ItemRequest extends FormRequest
     {
         return [
             'item_img.required' => '商品画像を入力してください',
-            'category_name.required' => 'カテゴリーを入力してください',
+            'category_name.required' => 'カテゴリーは1つ以上入力してください',
             'condition_name.required' => '商品の状態を入力してください',        
             'name.required' => '商品名を入力してください',
             'name.string' => '商品名は文字列で入力してください',

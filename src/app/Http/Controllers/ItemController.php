@@ -100,10 +100,19 @@ class ItemController extends Controller
             'price' => $request->input('price'),
         ]);
 
+        
         ItemCategory::create([
             'item_id' => $item->id,
-            'category_id' => $request->input('category_name')
+            'category_id' => $request->input('category_name'),
         ]);
+
+        if ($request->filled('category_name2')) {
+            ItemCategory::create([
+                'item_id' => $item->id,
+                'category_id' => $request->input('category_name2')
+            ]);
+        }   
+        
         return redirect('/')->with('result','出品処理が完了しました');
     }
 
