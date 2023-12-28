@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Item;
+use App\Models\ItemCategory;
 use App\Models\User;
 use App\Models\Favorite;
 use App\Models\Comment;
@@ -20,7 +21,7 @@ class CommentController extends Controller
         $item = Item::find($id);
         $item->isFavorite = Favorite::isFavorite($item->id, $user->id)->exists();
 
-        $categories = $item->itemCategories()->with('category')->get();
+        $categories = ItemCategory::where('item_id',$item->id)->get();
         $favoriteCount = Favorite::where('item_id', $item->id)->count();       
         $comments = Comment::where('item_id', $item->id)->with('user')->get();
         $commentCount = $comments->count();
@@ -40,7 +41,7 @@ class CommentController extends Controller
         ]);
 
         $item->isFavorite = Favorite::isFavorite($item->id, $user->id)->exists();
-        $categories = $item->itemCategories()->with('category')->get();
+        $categories = ItemCategory::where('item_id',$item->id)->get();
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $comments = Comment::where('item_id', $item->id)->with('user')->get();
         $commentCount = $comments->count();   

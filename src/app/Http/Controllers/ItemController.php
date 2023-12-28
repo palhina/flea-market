@@ -13,6 +13,7 @@ use App\Models\Address;
 use App\Models\Payment;
 use App\Models\SoldItem;
 use App\Models\Category;
+use App\Models\ItemCategory;
 use App\Models\Condition;
 
 
@@ -45,7 +46,8 @@ class ItemController extends Controller
         }  
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $commentCount = Comment::where('item_id', $item->id)->count();
-        $categories = $item->itemCategories()->with('category')->get();
+        $item->isBought = SoldItem::isBought($item->id)->exists();
+        $categories = ItemCategory::where('item_id',$item->id)->get();
 
         return view('item_detail',compact('item','categories','favoriteCount','commentCount'));
     }
@@ -88,10 +90,9 @@ class ItemController extends Controller
         $userId = Auth::id();
         $filename=$request->item_img->getClientOriginalName();
         $img=$request->item_img->storeAs('item',$filename,'public');
-
-        Item::create([
+        
+        $item = Item::create([
             'user_id' => $userId,
-            'item_category_id' => $request->input('category_name'),
             'condition_id' => $request->input('condition_name'),
             'img_url' => $img,
             'item_name' => $request->input('name'),
@@ -99,6 +100,10 @@ class ItemController extends Controller
             'price' => $request->input('price'),
         ]);
 
+        ItemCategory::create([
+            'item_id' => $item->id,
+            'category_id' => $request->input('category_name')
+        ]);
         return redirect('/')->with('result','出品処理が完了しました');
     }
 

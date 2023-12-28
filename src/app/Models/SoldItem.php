@@ -27,4 +27,10 @@ class SoldItem extends Model
     {
         return $this->belongsTo(Payment::class, 'payment_id', 'id');
     }
+
+    // 商品が購入済みかどうかを調べる
+    public function scopeIsBought($query, $itemId)
+    {
+        return $query->where('item_id', $itemId);
+    }
 }

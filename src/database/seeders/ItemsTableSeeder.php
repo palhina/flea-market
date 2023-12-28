@@ -17,7 +17,6 @@ class ItemsTableSeeder extends Seeder
         $items = [
             [
                 'user_id' => '1',
-                'item_category_id' => '1',
                 'condition_id' =>'2',
                 'img_url' =>'/images/item/bag.jpg',
                 'item_name' =>'エコバッグ',
@@ -26,7 +25,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '1',
-                'item_category_id' => '2',
                 'condition_id' =>'1',
                 'img_url' =>'/images/item/figurine.jpg',
                 'item_name' =>'アロマキャンドル',
@@ -35,7 +33,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '1',
-                'item_category_id' => '3',
                 'condition_id' =>'3',
                 'img_url' =>'/images/item/grasses.jpg',
                 'item_name' =>'サングラス',
@@ -45,7 +42,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '1',
-                'item_category_id' => '4',
                 'condition_id' =>'2',
                 'img_url' =>'/images/item/pillow.jpg',
                 'item_name' =>'クッション',
@@ -54,7 +50,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '5',
                 'condition_id' =>'1',
                 'img_url' =>'/images/item/scrub.jpg',
                 'item_name' =>'ボディスクラブ',
@@ -63,7 +58,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '6',
                 'condition_id' =>'1',
                 'img_url' =>'/images/item/soap.jpg',
                 'item_name' =>'ボディソープ・バスソルト',
@@ -73,7 +67,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '7',
                 'condition_id' =>'3',
                 'img_url' =>'/images/item/teddy-bear.jpg',
                 'item_name' =>'クマのぬいぐるみ',
@@ -83,7 +76,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '8',
                 'condition_id' =>'1',
                 'img_url' =>'/images/item/tumbler.jpg',
                 'item_name' =>'タンブラー',
@@ -92,7 +84,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '9',
                 'condition_id' =>'4',
                 'img_url' =>'/images/item/dog_wear.jpg',
                 'item_name' =>'洋服（小型犬用）',
@@ -101,7 +92,6 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_category_id' => '10',
                 'condition_id' =>'2',
                 'img_url' =>'/images/item/camera.jpg',
                 'item_name' =>'デジタルカメラ',
@@ -113,7 +103,6 @@ class ItemsTableSeeder extends Seeder
         {
             Item::create([
                 'user_id' => $item['user_id'],
-                'item_category_id' => $item['item_category_id'],
                 'condition_id' => $item['condition_id'],
                 'img_url' => $item['img_url'],
                 'item_name' => $item['item_name'],

@@ -16,7 +16,7 @@ class CreateSoldItemsTable extends Migration
         Schema::create('sold_items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('item_id');
+            $table->unsignedBigInteger('item_id')->unique();
             $table->unsignedBigInteger('payment_id');
             $table->timestamps();
         });

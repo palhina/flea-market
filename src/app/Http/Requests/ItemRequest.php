@@ -25,7 +25,6 @@ class ItemRequest extends FormRequest
     {
         return [
             'item_img' => ['required'],
-            'category_name' => ['required'],
             'condition_name' => ['required'],
             'name' => ['required', 'string','max:191'],
             'comment' => ['required', 'string','max:2000'],

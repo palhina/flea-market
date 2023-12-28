@@ -16,7 +16,6 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('item_category_id');
             $table->unsignedBigInteger('condition_id');
             $table->text('img_url')->nullable();
             $table->string('item_name');

@@ -34,9 +34,9 @@
                         <h2 class="sell__item-desc">商品の詳細</h2>
                     </div>
                     <div class="form__input">
-                        <p class="form__ttl">カテゴリー</p>
+                        <p class="form__ttl">カテゴリー(１つ以上選択)</p>
                         <select class="form__category" name="category_name">
-                            <option value="">カテゴリーを選択</option>
+                            <option value="">カテゴリーを選択(必須)</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                             @endforeach   

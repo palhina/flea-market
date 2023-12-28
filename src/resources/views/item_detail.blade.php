@@ -54,10 +54,14 @@
                     <p class="item__fav-number"> {{ $commentCount }}</p>
                 </div>        
             </div>
-            <form class="item__contents-buy" action="/purchase/{{ $item->id }}" method="get">
-                @csrf
-                <button class="item__buy-btn">購入する</button>
-            </form>
+            @if ($item->isBought)
+                <p class="item__purchased">売り切れ</p>
+            @else
+                <form class="item__contents-buy" action="/purchase/{{ $item->id }}" method="get">
+                    @csrf
+                    <button class="item__buy-btn">購入する</button>
+                </form>
+            @endif
             <div class="item__desc-wrapper">
                 <h2 class="item__contents-desc">商品説明</h2>
                 <p class="item__contents-text">{{ $item->description }}</p>

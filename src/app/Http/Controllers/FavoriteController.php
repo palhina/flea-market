@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\Favorite;
 use App\Models\Comment;
+use App\Models\ItemCategory;
 
 class FavoriteController extends Controller
 {
@@ -22,7 +23,7 @@ class FavoriteController extends Controller
             'item_id' => $item->id,
         ]);
 
-        $categories = $item->itemCategories()->with('category')->get();
+        $categories = ItemCategory::where('item_id',$item->id)->get();
         $item->isFavorite = Favorite::isFavorite($item->id, $userId)->exists();
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $commentCount = Comment::where('item_id', $item->id)->count();
@@ -40,7 +41,7 @@ class FavoriteController extends Controller
             ->where('user_id', $userId)
             ->delete();
 
-        $categories = $item->itemCategories()->with('category')->get();
+        $categories = ItemCategory::where('item_id',$item->id)->get();
         $item->isFavorite = Favorite::isFavorite($item->id, $userId)->exists();
         $favoriteCount = Favorite::where('item_id', $item->id)->count();
         $commentCount = Comment::where('item_id', $item->id)->count();
