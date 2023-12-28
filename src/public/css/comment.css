@@ -67,6 +67,14 @@
     margin: 15px;
 }
 
+.comment__delete--btn {
+    border: 2px solid black;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #FFF;
+}
+
 .item__contents-rate {
     margin-top: 50px;
 }

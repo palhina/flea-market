@@ -75,6 +75,13 @@
                 <div class="rate__comments">
                     <p>{{ $singleComment->comment }}</p>
                 </div>
+                @if($singleComment->user_id === auth()->user()->id)
+                    <form class="comment__delete" method="post" action="/comment/delete/{{ $singleComment->id }}">
+                        @method('DELETE')
+                        @csrf
+                        <button class="comment__delete--btn" type="submit">×</button>
+                    </form>
+                @endif
             </div>
             @endforeach
 

@@ -48,4 +48,23 @@ class CommentController extends Controller
 
         return view('comment', compact('item','categories','favoriteCount','commentCount','comments'));
     }
+
+    // コメント削除機能
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        $itemId = $comment->item_id;
+        $comment->delete();   
+
+        $item = Item::find($itemId);
+        $user = Auth::user();
+        $item->isFavorite = Favorite::isFavorite($itemId, $user->id)->exists();
+
+        $categories = ItemCategory::where('item_id',$itemId)->get();
+        $favoriteCount = Favorite::where('item_id', $itemId)->count();       
+        $comments = Comment::where('item_id', $itemId)->with('user')->get();
+        $commentCount = $comments->count();
+
+        return view('comment', compact('item','categories','favoriteCount','commentCount','comments'));
+    }
 }

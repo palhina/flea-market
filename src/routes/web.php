@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function (){
 
     Route::get('/comment/{id}', [CommentController::class, 'comment']);
     Route::post('/comment/{id}', [CommentController::class, 'commentTo']);
+    Route::delete('/comment/delete/{id}', [CommentController::class, 'deleteComment']);
 
     Route::get('/purchase/address/{id}', [ProfileController::class, 'address']);
     Route::post('/purchase/address/{id}', [ProfileController::class, 'createAddress']);
