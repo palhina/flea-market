@@ -19,8 +19,11 @@
                 <div class="sell-item__group">
                     <h2 class="sell__item-img">商品画像</h2>
                 </div>
-                <div class="sell-title__form-img">
-                    <input class="form__img"  type="file" name="item_img" accept="image/jpeg, image/png">
+                <div class="sell-item__img-wrapper">
+                    <label class="sell-item__img">
+                        画像を選択する
+                        <input class="form__img"  type="file" name="item_img" accept="image/jpeg, image/png">
+                    </label>
                 </div>
             </div>
             <div class="form__error">
@@ -35,13 +38,13 @@
                     </div>
                     <div class="form__input">
                         <p class="form__ttl">カテゴリー(１つ以上選択)</p>
-                        <select class="form__category" name="category_name">
+                        <select class="form__select" name="category_name">
                             <option value="">カテゴリーを選択(必須)</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                             @endforeach   
                         </select>
-                        <select class="form__category" name="category_name2">
+                        <select class="form__select" name="category_name2">
                             <option value="">カテゴリーを選択(任意)</option>
                             @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -55,7 +58,7 @@
                     </div>
                     <div class="form__input">
                         <p class="form__ttl">商品の状態</p>
-                        <select class="form__category" name="condition_name">
+                        <select class="form__select" name="condition_name">
                             <option value="">状態を選択</option>
                             @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}">{{ $condition->condition_name }}</option>
@@ -102,7 +105,8 @@
                     <div class="form__input">
                         <p class="form__ttl">販売価格</p>
                         <div class="form__category">
-                            <input class="form__text" type="text" name="price" value="{{ old('price') }}" />
+                            <span class="form__text-symbol">￥</span>
+                            <input class="form__text-price" type="text" name="price" value="{{ old('price') }}" />
                         </div>
                         <div class="form__error">
                             @if ($errors->has('price'))

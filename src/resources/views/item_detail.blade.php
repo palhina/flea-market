@@ -73,7 +73,9 @@
                         <th class="item__tag-header">カテゴリー</th>
                         @foreach($categories as $categoryItem)
                         <td  class="item__tag-desc">
-                            {{$categoryItem->category->category_name}}
+                            <p class="item__tag-category">
+                                {{$categoryItem->category->category_name}}
+                            </p>
                         </td>
                         @endforeach
                     </tr>

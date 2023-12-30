@@ -125,7 +125,7 @@ class ItemController extends Controller
                 $query->where('item_name', 'LIKE', '%' . $keyword . '%')
                 ->orWhere('description', 'LIKE', '%' . $keyword . '%');
             })
-            ->orWhereHas('itemCategories.category', function ($query) use ($keyword) 
+            ->orWhereHas('categories', function ($query) use ($keyword) 
             {
                 $query->where('category_name', 'LIKE', '%' . $keyword . '%');
             })

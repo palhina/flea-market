@@ -22,9 +22,19 @@ class Item extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
-    
+
     public function condition()
     {
         return $this->belongsTo(Condition::class, 'condition_id', 'id');
+    }
+
+    public function itemCategories()
+    {
+        return $this->hasMany(ItemCategory::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'item_categories', 'item_id', 'category_id');
     }
 }

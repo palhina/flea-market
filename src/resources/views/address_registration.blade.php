@@ -19,7 +19,7 @@
                 <div class="form__input">
                     <p class="form__ttl">郵便番号</p>
                     <div class="form__postcode">
-                        <input type="text" name="postcode" value="{{ old('postcode') }}" />
+                        <input class="form__text" type="text" name="postcode" value="{{ old('postcode') }}" />
                     </div>
                     <div class="form__error">
                         @if ($errors->has('postcode'))
@@ -30,7 +30,7 @@
                 <div class="form__input">
                     <div class="form__address">
                         <p class="form__ttl">住所</p>
-                        <input type="text" name="address" value="{{ old('address') }}"/>
+                        <input class="form__text" type="text" name="address" value="{{ old('address') }}"/>
                     </div>
                     <div class="form__error">
                         @if ($errors->has('address'))
@@ -41,7 +41,7 @@
                 <div class="form__input">
                     <div class="form__building">
                         <p class="form__ttl">建物名</p>
-                        <input type="text" name="building" />
+                        <input class="form__text" type="text" name="building" />
                     </div>
                     <div class="form__error">
                         @if ($errors->has('building'))

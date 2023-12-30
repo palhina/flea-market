@@ -11,14 +11,24 @@
     margin: 50px 0;
 }
 
-.sell-title__form-img{
+.sell-item__img-wrapper{
     border: 1px dotted #909090;
     width: 100%;
     height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.form__img{
-    
+.form__img {
+    display: none;
+}
+
+.sell-item__img {
+    color: #FF5555;
+    padding: 10px;
+    border: 1px solid #FF5555;
+    border-radius: 5px;
 }
 
 .sell-title__form-content{
@@ -39,17 +49,29 @@
     margin: 30px 0;
 }
 
+.form__select{
+    width: 100%;
+    height: 30px;
+    margin: 20px 0;
+    border: 2px solid #909090;
+}
+
 .form__ttl {
     font-weight: bold;
 }
 
-.form__text {
+.form__text,
+.form__text-price {
     border: 2px solid #909090;
     margin: 0;
     padding: 10px;
     border-radius: 3px;
     width: 100%;
     height: 10%;
+}
+
+.form__text-price{
+    padding: 10px 10px 10px 20px;
 }
 
 .form__error {
@@ -64,6 +86,14 @@
     border-radius: 3px;
     width: 100%;
     height: 100px;
+}
+
+.form__text-symbol {
+    position: absolute;
+    margin-right: 5px;
+    margin-top: 8px;
+    margin-left: 5px;
+    color: #000;
 }
 
 .form__button {
@@ -82,4 +112,11 @@
     font-size: large;
     cursor: pointer;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .sell-item__wrapper {
+        margin: 30px auto;
+        width: 80%;
+    }
 }

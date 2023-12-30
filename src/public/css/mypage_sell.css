@@ -73,3 +73,53 @@
     height: 200px;
     object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+    .item__profile {
+        display: block;
+    }
+
+    .item__profile--content {
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile__img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .form__ttl {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    .item__profile-edit {
+        margin: 0;
+        text-align: center;
+    }
+
+    .profile__edit-btn {
+        font-size: medium;
+    }
+
+    .item__list--sell,
+    .item__list--buy {
+        margin: 10px;
+        font-size: medium;
+    }
+
+    .item-all__card {
+        margin: 10px;
+    }
+
+    .card__img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+}

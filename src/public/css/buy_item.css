@@ -1,13 +1,13 @@
 .item-buy__wrapper {
-    width: 80%;
+    width: 90%;
     margin: 30px auto;
     padding-top: 30px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .item__contents-detail {
-    width: 55%;
+    width: 50%;
 }
 
 .item__contents {
@@ -54,6 +54,7 @@
     border-style: none;
     background-color: #FFF;
     color: #0073CC;
+    margin-top: 30px;
 }
 
 .user__address{
@@ -63,7 +64,6 @@
     width: 80%;
 }
 
-/* 右側 */
 .item__pay-wrapper {
     width: 40%;
 }
@@ -74,7 +74,7 @@
 
 .item__pay-table {
     border: 1px solid;
-    width: 400px;
+    width: 90%;
     margin: 50px auto;
 }
 
@@ -82,18 +82,45 @@
     height: 50px;
 }
 
-.item__pay-header,
-.item__pay-desc {
-    width: 200px;
-}
-
 .item__buy-btn {
     background-color: #FF5555;
     border-style: none;
     color: #FFF;
     padding: 10px;
-    width: 80%;
+    width: 100%;
     text-align: center;
-    margin: 50px;
+    margin: 50px auto;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .item-buy__wrapper {
+        width: 90%;
+        margin: 30px auto;
+        padding-top: 30px;
+        display: block;
+    }
+
+    .item__contents-detail {
+        width: 100%;
+    }
+
+    .item__contents {
+        width: 100%;
+        display: flex;
+        margin: auto;
+    }
+
+    .item__contents-ttl{
+        margin: 0;
+    }
+
+    .item__pay-wrapper {
+        width: 100%;
+    }
+
+    .user__address{
+        width:100% ;
+    }
+
 }

@@ -26,10 +26,9 @@
                         @if($user->name !== null)
                         {{ $user->name }}様
                         @else
-                        ユーザー名が未入力です
+                        ユーザー名を入力
                         @endif
                     </p>
-
                 </div>
             </div>
             <div class="item__profile-edit">

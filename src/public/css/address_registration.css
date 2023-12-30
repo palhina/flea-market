@@ -16,7 +16,7 @@
     font-weight: bold;
 }
 
-input[type="text"] {
+.form__text {
     border: 2px solid #909090;
     margin: 0;
     padding: 10px;
@@ -46,4 +46,11 @@ input[type="text"] {
     font-size: large;
     cursor: pointer;
     margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .register-address__content {
+        margin: 0 auto;
+        width: 80%;
+    }
 }

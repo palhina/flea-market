@@ -6,7 +6,7 @@
 
 .item__list--recommend,
 .item__list--favorite {
-    margin: 10px 30px;
+    margin: 10px 60px;
     font-size: larger;
     background-color: #FFF;
     border-style: none;
@@ -21,15 +21,32 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: left;
-    margin: auto;
 }
 
 .item-all__card {
-    margin: 30px;
+    padding: 30px;
 }
 
 .card__img {
     width: 200px;
     height: 200px;
     object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    .item__list--recommend,
+    .item__list--favorite {
+        margin: 10px;
+        font-size: medium;
+    }
+
+    .item-all__card {
+        padding: 10px;
+    }
+
+    .card__img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
 }

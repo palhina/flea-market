@@ -9,14 +9,14 @@
 @endsection
 
 @section('content') 
-    <div class="register-profile__content">
-            <div class="register-profile__group-title">
+    <div class="edit-profile__content">
+            <div class="edit-profile__group-title">
                 <h1>プロフィール設定</h1>
             </div>
             <form class="form" action="/mypage/profile/{{$user->id}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="register__profile">
+                <div class="edit__profile">
                     @if (strpos($user->img_url, '/images/profile/') === 0)
                         <img class="profile__img" accept="image/*" src="{{ $user->img_url }}">
                     @elseif (strpos($user->img_url, 'profile/') === 0)
@@ -24,9 +24,12 @@
                     @else
                         <img class="profile__img" accept="image/*" src="/images/icon/no_image.jpg">
                     @endif
-                    <input class="profile__upload-btn" type="file" name="profile_img" accept=".jpg, .jpeg, .png, .gif">
+                    <label class="profile-img__upload">
+                        画像を選択する
+                        <input class="profile__upload-btn" type="file" name="profile_img" accept=".jpg, .jpeg, .png">
+                    </label>
                 </div>    
-                <div class="register__form-content">
+                <div class="edit__form-content">
                     <div class="form__input">
                         <p class="form__ttl">ユーザー名</p>
                         <div class="form__name">
@@ -72,7 +75,7 @@
                         </div>
                     </div>
                     <div class="form__button">
-                        <button class="form__button-register" type="submit">更新する</button>
+                        <button class="form__button-edit" type="submit">更新する</button>
                     </div>
                 </div>
             </form>

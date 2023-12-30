@@ -19,11 +19,11 @@
 }
 
 .item__contents-detail {
-    width: 40%;
+    width: 50%;
 }
 
 .item__contents-ttl {
-    margin: 30px;
+    margin: 30px 0;
 }
 
 .item__contents-rating {
@@ -59,7 +59,8 @@
 }
 
 .rate__profile-photo {
-    width: 10%;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
@@ -99,4 +100,31 @@
     padding: 10px;
     width: 100%;
     margin: 30px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .item-detail__wrapper {
+        display: block;
+        width: 80%;
+        margin: 30px auto;
+        padding-top: 30px;
+    }
+
+    .item__contents {
+        width: 100%;
+    }
+
+    .item__contents-detail {
+        width: 100%;
+    }
+
+    .rate__profile-photo {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .rate__comments{
+        margin: 5px;
+    }
 }

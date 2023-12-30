@@ -72,9 +72,7 @@
                     @endif
                     <p class="rate__profile-name">{{ $singleComment->user->name }}</p>
                 </div>
-                <div class="rate__comments">
-                    <p>{{ $singleComment->comment }}</p>
-                </div>
+                <p class="rate__comments">{{ $singleComment->comment }}</p>
                 @if($singleComment->user_id === auth()->user()->id)
                     <form class="comment__delete" method="post" action="/comment/delete/{{ $singleComment->id }}">
                         @method('DELETE')
