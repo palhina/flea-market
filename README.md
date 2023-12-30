@@ -28,7 +28,7 @@
 「購入する」ボタン押下で⑤購入ページへ遷移します。なお、すでに購入が一度完了している商品は「売り切れ」表示になりボタン押下ができなくなります。  
 また、未ログイン状態で「購入する」ボタンを押下するとログイン画面へリダイレクトします。  
 ![商品詳細](https://github.com/palhina/flea-market/assets/129643430/5a9edc7a-89c1-4e5a-9a17-b86390fdf93b)  
-![商品詳細(購入済み)](https://github.com/palhina/flea-market/assets/129643430/9359c37a-4e65-4bca-8c58-a427dfc62ba4)  
+![商品詳細(購入済み)](https://github.com/palhina/flea-market/assets/129643430/420c9871-cee2-4b5c-9bfc-383b8fa3e553)  
   
 ### ⑤購入ページ    
 ④商品詳細ページにて、「購入する」ボタン押下で遷移します。  
