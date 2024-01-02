@@ -26,7 +26,7 @@ class ItemController extends Controller
         return view('items_recommend',compact('items'));
     }
     
-    // 商品一覧(お気に入り)表示
+    // 商品一覧(マイリスト)表示
     public function favorite()
     {
         $user = Auth::user();

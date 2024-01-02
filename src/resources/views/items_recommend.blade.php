@@ -23,7 +23,7 @@
             </form>
         </div>
         <div class="item-all__list">
-            <form class="form" action="/item/favorite" method="get">
+            <form class="form" action="/item/favorite" method="post">
                 @csrf
                 <button class="item__list--favorite">マイリスト</button>
             </form>

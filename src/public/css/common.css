@@ -33,13 +33,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 70vw;
+    width: 75vw;
 }
 
 .search-form {
     display: flex;
     justify-content: space-between;
-    margin: 0 30px;
+    margin: 0 20px;
 }
 
 .search__key {
@@ -47,15 +47,20 @@
     height: 100%;
 }
 
+.header-nav{
+    width: 45vw;
+}
+
 .header-nav__list {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .header-nav__item  {
     list-style: none;
-    font-size: 100%;
-    margin: 0 8px;
+    font-size: 90%;
+    margin: 0 2%;
 }
 
 .nav__item {
@@ -67,7 +72,7 @@
     text-decoration: none;
     color: black;
     background-color: #FFF;
-    padding: 5px 15px;
+    padding: 3px 5px;
     border-radius: 3px;
 }
 

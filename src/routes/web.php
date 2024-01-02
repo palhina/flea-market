@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,16 +18,15 @@ use App\Http\Controllers\CommentController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// ユーザー認証
 
-Route::get('/register', [AuthController::class, 'register']);
-Route::post('/register', [AuthController::class, 'postRegister']);
-Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [AuthController::class, 'postLogin']);
+Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{id}', [ItemController::class, 'detail']);
+Route::post('/search', [ItemController::class, 'search']);
 
+// 利用者ログイン必須項目(購入、マイページ表示、出品、マイリスト登録、コメント)
 Route::middleware('auth')->group(function (){
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/item/favorite', [ItemController::class, 'favorite']);
+    Route::post('/item/favorite', [ItemController::class, 'favorite']);
     Route::get('/purchase/{id}', [ItemController::class, 'purchase']);
     Route::post('/purchase/{id}', [ItemController::class, 'getItem']);
     Route::get('/sell', [ItemController::class, 'list']);
@@ -48,7 +48,38 @@ Route::middleware('auth')->group(function (){
 
 });
 
-Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{id}', [ItemController::class, 'detail']);
-Route::post('/search', [ItemController::class, 'search']);
+
+
+// ユーザー認証
+Route::get('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'postRegister']);
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'postLogin']);
+
+// 店舗代表者作成、ログイン機能　
+Route::get('/register/manager', [AuthController::class, 'managerRegister']);
+Route::post('/register/manager', [AuthController::class, 'postManagerRegister']);
+Route::get('/login/manager', [AuthController::class, 'managerLogin'])->name('manager.login');
+Route::post('/login/manager', [AuthController::class, 'postManagerLogin']);
+Route::post('/logout/manager', [AuthController::class,'managerLogout']);
+
+// 管理者作成・ログイン機能　
+Route::get('/register/admin', [AuthController::class, 'adminRegister']);
+Route::post('/register/admin', [AuthController::class, 'postAdminRegister']);
+Route::get('/login/admin', [AuthController::class, 'adminLogin']);
+Route::post('/login/admin', [AuthController::class, 'postAdminLogin']);
+Route::post('/logout/admin', [AuthController::class,'adminLogout']);
+
+// 管理者機能
+Route::get('/menu/admin', [HomeController::class, 'adminMenu']);
+Route::get('/delete/user', [HomeController::class, 'deleteUser']);
+Route::delete('/delete/user/{id}', [HomeController::class, 'postDeleteUser']);
+Route::get('/check/transaction', [HomeController::class, 'checkTransaction']);
+
+// 店舗代表者機能
+Route::get('/menu/manager', [HomeController::class, 'managerMenu']);
+Route::get('/register/staff', [AuthController::class, 'staffRegister']);
+Route::post('/register/staff', [AuthController::class, 'postStaffRegister']);
+Route::get('/delete/staff', [HomeController::class, 'deleteStaff']);
+Route::delete('/delete/staff/{id}', [HomeController::class, 'postDeleteStaff']);
 

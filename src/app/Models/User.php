@@ -20,7 +20,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'img_url'
+        'img_url',
+        'manager_id'
     ];
 
     /**
@@ -40,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function manager()
+    {
+        return $this->belongsTo(Manager::class, 'manager_id', 'id');
+    }
 }

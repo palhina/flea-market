@@ -21,12 +21,21 @@ class UsersTableSeeder extends Seeder
             'email' => '111@mail.com',
             'password' =>bcrypt('1234567890'),
             'img_url' => '/images/profile/man.jpg',
+            'manager_id' => null
         ],
         [
             'name' => 'test2',
             'email' => '222@mail.com',
             'password' => bcrypt('1234567890'),
             'img_url' => '/images/profile/woman.jpg',
+            'manager_id' => null
+        ],
+        [
+            'name' => 'staff1',
+            'email' => 'staff1@mail.com',
+            'password' => bcrypt('1234567890'),
+            'img_url' => '/images/profile/cat.jpg',
+            'manager_id' => '1'
         ],
         ];
     foreach ($users as $user) 
@@ -36,6 +45,7 @@ class UsersTableSeeder extends Seeder
                 'email' => $user['email'],
                 'password' => $user['password'],
                 'img_url' => $user['img_url'],
+                'manager_id' => $user['manager_id'],
             ]);
         }
     }

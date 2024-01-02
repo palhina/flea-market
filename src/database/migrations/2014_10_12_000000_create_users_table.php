@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->text('img_url')->nullable();
+            $table->unsignedBigInteger('manager_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

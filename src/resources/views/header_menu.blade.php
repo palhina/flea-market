@@ -20,11 +20,33 @@
                 <li class="header-nav__item"><a class="nav__item" href="/mypage">マイページ</a></li>
                 <li class="header-nav__item"><a class="nav__item-sell" href="/sell">出品</a></li>
             </ul>
+            @elseif(Auth::guard('admins')->check())
+            <ul class="header-nav__list">
+                <li class="header-nav__item">
+                    <form class="form" action="/logout/admin" method="post">
+                    @csrf
+                        <button class="header-nav__button">ログアウト</button>
+                    </form>
+                    </li>
+                <li class="header-nav__item"><a class="nav__item" href="/menu/admin">管理者メニュー</a></li>
+            </ul>
+            @elseif(Auth::guard('managers')->check())
+            <ul class="header-nav__list">
+                <li class="header-nav__item">
+                    <form class="form" action="/logout/manager" method="post">
+                    @csrf
+                        <button class="header-nav__button">ログアウト</button>
+                    </form>
+                </li>
+                <li class="header-nav__item"><a class="nav__item" href="/menu/manager">店舗代表者メニュー</a></li>
+            </ul>
             @else
             <ul class="header-nav__list">
                 <li class="header-nav__item"><a class="nav__item" href ="/login">ログイン</a></li>
                 <li class="header-nav__item"><a class="nav__item" href="/register">会員登録</a></li>
                 <li class="header-nav__item"><a class="nav__item-sell" href="/sell">出品</a></li>
+                <li class="header-nav__item"><a class="nav__item" href="/login/admin">管理者</a></li>
+                <li class="header-nav__item"><a class="nav__item" href="/login/manager">店舗代表者</a></li>
             </ul>
             @endif
         </nav>
