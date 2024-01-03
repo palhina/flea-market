@@ -22,7 +22,8 @@
                 <button class="item__list--recommend">おすすめ</button>
             </form>
         </div>
-        @if(!auth()->user()->manager_id)
+        @if(auth()->check() &&auth()->user()->manager_id)
+        @else
         <div class="item-all__list">
             <form class="form" action="/item/favorite" method="post">
                 @csrf

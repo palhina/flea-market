@@ -25,26 +25,27 @@
             <h1 class="item__contents-ttl">{{ $item->item_name }}</h1>
             <h2 class="item__contents-price">￥{{ $item->price }}</h2>
             <div class="item__contents-rating">
-                @if(!auth()->user()->manager_id)
-                <div class="item__fav-add">
-                    @if ($item->isFavorite)   
-                        <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
-                            @method('DELETE')
-                            @csrf
-                            <button class="fav-btn__favorite" type="submit">
-                                <img class="rating__fav-icon" alt="favorite" src="/images/icon/star-fav.png" />
-                            </button>
-                        </form>
-                    @else
-                        <form  class="fav__add" method="post" action="/favorite_add/{{ $item->id }}">
-                            @csrf
-                            <button class="fav-btn__not" type="submit">
-                                <img class="rating__fav-icon" alt="notFavorite" src="/images/icon/star.png" />
-                            </button>
-                        </form>
-                    @endif
-                    <p class="item__fav-number"> {{ $favoriteCount }}</p>
-                </div>
+                @if(auth()->check() && auth()->user()->manager_id)
+                @else
+                    <div class="item__fav-add">
+                        @if ($item->isFavorite)   
+                            <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
+                                @method('DELETE')
+                                @csrf
+                                <button class="fav-btn__favorite" type="submit">
+                                    <img class="rating__fav-icon" alt="favorite" src="/images/icon/star-fav.png" />
+                                </button>
+                            </form>
+                        @else
+                            <form  class="fav__add" method="post" action="/favorite_add/{{ $item->id }}">
+                                @csrf
+                                <button class="fav-btn__not" type="submit">
+                                    <img class="rating__fav-icon" alt="notFavorite" src="/images/icon/star.png" />
+                                </button>
+                            </form>
+                        @endif
+                        <p class="item__fav-number"> {{ $favoriteCount }}</p>
+                    </div>
                 @endif
                 <div class="item__rating">
                     <form  class="item__comment" method="get" action="/comment/{{$item->id}}">
@@ -56,7 +57,8 @@
                     <p class="item__fav-number"> {{ $commentCount }}</p>
                 </div>        
             </div>
-            @if(!auth()->user()->manager_id)
+            @if(auth()->check() && auth()->user()->manager_id)
+            @else
                 @if ($item->isBought)
                     <p class="item__purchased">売り切れ</p>
                 @else
