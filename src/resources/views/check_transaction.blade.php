@@ -10,31 +10,33 @@
 
 @section('content')
     <div class="menu__contents">
-        <h1>取引履歴確認</h1>
-        <div class="shop-list__wrapper">
+        <h1 class="transaction-confirm__ttl">取引履歴確認</h1>
+        <div class="transaction-confirm__wrapper">
             @foreach($data as $transactionData)
-                <p>ショップ名：{{$transactionData['manager']->name}}</p>
+            <div class="transaction-confirm__list">
+                <h2 class="transaction-confirm__manager">ショップ名：{{$transactionData['manager']->name}}</h2>
                 @if ($transactionData['transactions']->isEmpty())
-                    <p>取引履歴はありません</p>
+                    <p class="transaction-confirm__alart">取引履歴はありません</p>
                 @else
-                    <table>
+                    <table class="transaction-confirm__table">
                         <tr>
-                            <th>購入日時</th>
-                            <th>購入者名</th>
-                            <th>購入者メールアドレス</th>
-                            <th>商品名</th>
+                            <th class="transaction-confirm__header">購入日時</th>
+                            <th class="transaction-confirm__header">購入者名</th>
+                            <th class="transaction-confirm__header">購入者Email</th>
+                            <th class="transaction-confirm__header">商品名</th>
                         </tr>
                         @foreach($transactionData['transactions'] as $transaction)
-                        <tr>
-                            <td>{{$transaction->created_at}}
+                        <tr class="transaction-confirm__row">
+                            <td class="transaction-confirm__detail">{{$transaction->created_at}}
                             </td> 
-                            <td>{{$transaction->user->name}}</td>
-                            <td>{{$transaction->user->email}}</td>
-                            <td>{{$transaction->item->item_name}}</td>
+                            <td class="transaction-confirm__detail">{{$transaction->user->name}}</td>
+                            <td class="transaction-confirm__detail">{{$transaction->user->email}}</td>
+                            <td class="transaction-confirm__detail">{{$transaction->item->item_name}}</td>
                         </tr>
                         @endforeach
                     </table>
                 @endif
+            </div>
             @endforeach
         </div>
     </div>

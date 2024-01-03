@@ -75,7 +75,7 @@ class ItemsTableSeeder extends Seeder
 
             ],
             [
-                'user_id' => '2',
+                'user_id' => '3',
                 'condition_id' =>'1',
                 'img_url' =>'/images/item/tumbler.jpg',
                 'item_name' =>'タンブラー',
@@ -83,7 +83,7 @@ class ItemsTableSeeder extends Seeder
                 'price' =>'5000',
             ],
             [
-                'user_id' => '2',
+                'user_id' => '3',
                 'condition_id' =>'4',
                 'img_url' =>'/images/item/dog_wear.jpg',
                 'item_name' =>'洋服（小型犬用）',
@@ -91,7 +91,7 @@ class ItemsTableSeeder extends Seeder
                 'price' =>'1000',
             ],
             [
-                'user_id' => '2',
+                'user_id' => '3',
                 'condition_id' =>'2',
                 'img_url' =>'/images/item/camera.jpg',
                 'item_name' =>'デジタルカメラ',

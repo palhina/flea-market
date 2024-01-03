@@ -28,7 +28,7 @@ class SoldItemsTableSeeder extends Seeder
             ],
             [
                 'user_id' => '2',
-                'item_id' => '3',
+                'item_id' => '9',
                 'payment_id' => '1'
 
             ],

@@ -114,7 +114,7 @@ class AuthController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect('/login/manager')->with('result', '店舗代表者アカウントの作成に成功しました');
+        return redirect('/menu/admin')->with('result', '店舗代表者アカウントの作成に成功しました');
     }
 
     // 店舗代表者ログインページ表示

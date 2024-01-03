@@ -1,0 +1,62 @@
+.transaction-confirm__ttl{
+    text-align: center;
+    margin: 50px;
+}
+
+.transaction-confirm__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.transaction-confirm__manager {
+    border-bottom: 2px solid black;
+}
+
+.transaction-confirm__list {
+    background-color: gainsboro;
+    margin: 20px;
+    padding: 20px;
+    width: 45%;
+}
+
+.transaction-confirm__alart {
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.transaction-confirm__table{
+    width: 90%;
+    text-align: center;
+    margin: 20px auto;
+}
+
+.transaction-confirm__header{
+    padding:0 20px;
+}
+
+.transaction-confirm__row {
+    border-top: 1px double;
+}
+
+@media screen and (max-width: 768px) {
+    .transaction-confirm__wrapper {
+        display: block;
+    }
+
+    .transaction-confirm__list {
+        margin: 10px auto;
+        padding: 10px;
+        width: 95%;
+    }
+
+    .transaction-confirm__table {
+        width: 100%;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .transaction-confirm__header {
+        padding: 0 5px;
+    }
+}
