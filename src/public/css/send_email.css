@@ -1,0 +1,64 @@
+.flash_message {
+    color: black;
+    background-color: aliceblue;
+    padding: 20px;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.information-email__wrapper {
+    width: 50%;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.information-email__detail {
+    margin: 30px;
+    border-bottom: 1px solid;
+}
+
+.information-email__content {
+    background-color: #fff;
+    padding: 30px;
+}
+
+.information-email__ttl,
+.information-email__text {
+    margin: 30px;
+}
+
+.information-email__subject {
+    width: 90%;
+    color: black;
+}
+
+.information-email__message {
+    width: 90%;
+    height: 300px;
+}
+
+.information-email__btn {
+    text-align: right
+}
+
+.send-email__btn {
+    background-color: #FF5555;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    margin: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .information-email__wrapper {
+        width: 100%;
+        margin: 20px auto;
+    }
+
+    .send-email__btn {
+        margin: 10px;
+        padding: 10px;
+    }
+}

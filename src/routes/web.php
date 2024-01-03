@@ -7,6 +7,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +52,7 @@ Route::middleware('auth')->group(function (){
 
 
 
-// ユーザー認証
+// 一般利用者作成、一般利用者＆スタッフログイン機能
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'postRegister']);
 Route::get('/login', [AuthController::class, 'login'])->name('login');
@@ -75,6 +77,8 @@ Route::get('/menu/admin', [HomeController::class, 'adminMenu']);
 Route::get('/delete/user', [HomeController::class, 'deleteUser']);
 Route::delete('/delete/user/{id}', [HomeController::class, 'postDeleteUser']);
 Route::get('/check/transaction', [HomeController::class, 'transaction']);
+Route::get('/send_email', [MailController::class, 'email']);
+Route::post('/send_email', [MailController::class, 'sendEmail']);
 
 // 店舗代表者機能
 Route::get('/menu/manager', [HomeController::class, 'managerMenu']);

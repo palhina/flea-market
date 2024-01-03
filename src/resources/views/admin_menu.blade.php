@@ -18,7 +18,7 @@
         <form  class="form" action="/check/transaction" method="get">
             <button class="menu__select-btn" type="submit">取引履歴確認</button>
         </form>
-        <form  class="form" action="" method="get">
+        <form  class="form" action="/send_email" method="get">
             <button class="menu__select-btn" type="submit">メール送信</button>
         </form>
         <form  class="form" action="/register/manager" method="get">
