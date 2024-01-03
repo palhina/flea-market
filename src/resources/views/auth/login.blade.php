@@ -45,5 +45,6 @@
         <div class="login__form-guidance">
             <a class="form__guidance-register" href="/register">会員登録はこちら</a>
         </div>
+        <p>ショップスタッフの方もこちらのページからログインお願いします</p>
     </div>
 @endsection

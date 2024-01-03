@@ -30,6 +30,7 @@
             <h1 class="item__contents-ttl">{{ $item->item_name }}</h1>
             <h2 class="item__contents-price">￥{{ $item->price }}</h2>
             <div class="item__contents-rating">
+                @if(!auth()->user()->manager_id)
                 <div class="item__rating">
                     @if ($item->isFavorite)   
                         <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
@@ -49,6 +50,7 @@
                     @endif
                     <p class="item__fav-number">{{ $favoriteCount }}</p>
                 </div>
+                @endif
                 <div class="item__rating">
                     <form  class="item__comment" method="get" action="/comment/{{$item->id}}">
                         @csrf

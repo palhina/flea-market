@@ -17,7 +17,9 @@
             @if (Auth::check())
             <ul class="header-nav__list">
                 <li class="header-nav__item"><a class="nav__item" href="/logout">ログアウト</a></li>
-                <li class="header-nav__item"><a class="nav__item" href="/mypage">マイページ</a></li>
+                @if(!auth()->user()->manager_id)
+                    <li class="header-nav__item"><a class="nav__item" href="/mypage">マイページ</a></li>
+                @endif
                 <li class="header-nav__item"><a class="nav__item-sell" href="/sell">出品</a></li>
             </ul>
             @elseif(Auth::guard('admins')->check())

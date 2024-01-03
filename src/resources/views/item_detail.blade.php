@@ -25,6 +25,7 @@
             <h1 class="item__contents-ttl">{{ $item->item_name }}</h1>
             <h2 class="item__contents-price">￥{{ $item->price }}</h2>
             <div class="item__contents-rating">
+                @if(!auth()->user()->manager_id)
                 <div class="item__fav-add">
                     @if ($item->isFavorite)   
                         <form class="fav__delete" method="post" action="/favorite_delete/{{ $item->id }}">
@@ -44,6 +45,7 @@
                     @endif
                     <p class="item__fav-number"> {{ $favoriteCount }}</p>
                 </div>
+                @endif
                 <div class="item__rating">
                     <form  class="item__comment" method="get" action="/comment/{{$item->id}}">
                         @csrf
@@ -54,13 +56,15 @@
                     <p class="item__fav-number"> {{ $commentCount }}</p>
                 </div>        
             </div>
-            @if ($item->isBought)
-                <p class="item__purchased">売り切れ</p>
-            @else
-                <form class="item__contents-buy" action="/purchase/{{ $item->id }}" method="get">
-                    @csrf
-                    <button class="item__buy-btn">購入する</button>
-                </form>
+            @if(!auth()->user()->manager_id)
+                @if ($item->isBought)
+                    <p class="item__purchased">売り切れ</p>
+                @else
+                    <form class="item__contents-buy" action="/purchase/{{ $item->id }}" method="get">
+                        @csrf
+                        <button class="item__buy-btn">購入する</button>
+                    </form>
+                @endif
             @endif
             <div class="item__desc-wrapper">
                 <h2 class="item__contents-desc">商品説明</h2>

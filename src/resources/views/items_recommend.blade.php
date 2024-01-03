@@ -22,12 +22,14 @@
                 <button class="item__list--recommend">おすすめ</button>
             </form>
         </div>
+        @if(!auth()->user()->manager_id)
         <div class="item-all__list">
             <form class="form" action="/item/favorite" method="post">
                 @csrf
                 <button class="item__list--favorite">マイリスト</button>
             </form>
         </div>
+        @endif
     </div>
     <div class="item-all">
         @foreach($items as $item)
