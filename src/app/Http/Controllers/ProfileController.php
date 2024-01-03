@@ -62,8 +62,8 @@ class ProfileController extends Controller
     public function postEditAddress(AddressRequest $request, $id)
     {
         $user = Auth::user();
-        $address = Address::find($id);
-        
+        $address = Address::where('user_id',$user->id)->first();
+
         if ($request->hasFile('profile_img'))
         {
             $filename=$request->profile_img->getClientOriginalName();

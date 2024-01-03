@@ -1,0 +1,59 @@
+.flash_message {
+    color: black;
+    background-color: aliceblue;
+    padding: 20px;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.staff-list__ttl {
+    text-align: center;
+    margin: 50px;
+}
+
+.staff-list__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.staff-list__manager {
+    border-bottom: 1px solid black;
+}
+
+.staff__list {
+    background-color: gainsboro;
+    margin: 20px;
+    padding: 20px;
+    width: 30%;
+}
+
+.staff__delete-btn {
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    text-align: right;
+}
+
+.staff__alart {
+    margin: auto;
+    padding: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .staff-list__wrapper {
+        display: block;
+    }
+
+    .staff__list {
+        background-color: gainsboro;
+        margin: 10px;
+        padding: 10px;
+        width: 90%;
+    }
+
+    .staff__alart {
+        text-align: center;
+        padding: 20px;
+    }
+}

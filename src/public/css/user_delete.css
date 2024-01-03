@@ -1,6 +1,58 @@
+.flash_message {
+    color: black;
+    background-color: aliceblue;
+    padding: 20px;
+    text-align: center;
+    margin: 50px auto;
+}
+
+.user-list__ttl{
+    text-align: center;
+    margin: 50px;
+}
+
+.user-list__wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-list__name{
+    border-bottom: 1px solid black;
+}
+
+.user__list{
+    background-color: gainsboro;
+    margin: 20px;
+    padding: 20px;
+    width: 30%;
+}
+
 .user__delete-btn {
     color:black;
     border-radius: 50%;
     cursor: pointer;
     background-color:white;
+}
+
+.user__alart{
+    margin: auto;
+    padding: 20px;    
+}
+
+@media screen and (max-width: 768px) {
+    .user-list__wrapper {
+        display: block;
+    }
+
+    .user__list {
+        background-color: gainsboro;
+        margin: 10px;
+        padding: 10px;
+        width: 90%;
+    }
+
+    .user__alart {
+        text-align: center;
+        padding: 20px;
+    }
 }

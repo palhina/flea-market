@@ -43,7 +43,7 @@
             </div>
         </form>
         <div class="login__form-guidance">
-            <a class="form__guidance-register" href="/register/admin">会員登録はこちら</a>
+            <a class="form__guidance-register" href="/register/admin">管理者新規登録はこちら</a>
         </div>
     </div>
 @endsection

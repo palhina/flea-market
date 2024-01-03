@@ -42,8 +42,5 @@
                 </div>
             </div>
         </form>
-        <div class="login__form-guidance">
-            <a class="form__guidance-register" href="/register/manager">会員登録はこちら</a>
-        </div>
     </div>
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Manager;
+use App\Models\SoldItem;
 
 
 class HomeController extends Controller
@@ -32,11 +33,23 @@ class HomeController extends Controller
     }
 
     //  取引履歴確認
-    public function checkTransaction()
+    public function transaction()
     {
-        
-        return view('user_delete',compact('users'));
+        $managers = Manager::all();
+        $data = [];
+        foreach($managers as $manager){
+            $transactions = SoldItem::whereHas('item.user', function ($query) use ($manager) {
+                $query->where('manager_id', $manager->id);
+            })->with(['user', 'item'])->get();
+
+            $data[] = [
+                'manager' => $manager,
+                'transactions' => $transactions,
+            ];
+        }
+        return view('check_transaction',compact('data'));
     }
+
 
     //  店舗代表者メニュー表示
     public function managerMenu()

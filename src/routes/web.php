@@ -59,7 +59,7 @@ Route::post('/login', [AuthController::class, 'postLogin']);
 // 店舗代表者作成、ログイン機能　
 Route::get('/register/manager', [AuthController::class, 'managerRegister']);
 Route::post('/register/manager', [AuthController::class, 'postManagerRegister']);
-Route::get('/login/manager', [AuthController::class, 'managerLogin'])->name('manager.login');
+Route::get('/login/manager', [AuthController::class, 'managerLogin']);
 Route::post('/login/manager', [AuthController::class, 'postManagerLogin']);
 Route::post('/logout/manager', [AuthController::class,'managerLogout']);
 
@@ -74,7 +74,7 @@ Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 Route::get('/menu/admin', [HomeController::class, 'adminMenu']);
 Route::get('/delete/user', [HomeController::class, 'deleteUser']);
 Route::delete('/delete/user/{id}', [HomeController::class, 'postDeleteUser']);
-Route::get('/check/transaction', [HomeController::class, 'checkTransaction']);
+Route::get('/check/transaction', [HomeController::class, 'transaction']);
 
 // 店舗代表者機能
 Route::get('/menu/manager', [HomeController::class, 'managerMenu']);

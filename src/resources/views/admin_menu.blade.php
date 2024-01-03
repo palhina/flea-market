@@ -15,7 +15,7 @@
         <form  class="form" action="/delete/user" method="get">
             <button class="menu__select-btn" type="submit">利用者の削除</button>
         </form>
-        <form  class="form" action="check/transaction" method="get">
+        <form  class="form" action="/check/transaction" method="get">
             <button class="menu__select-btn" type="submit">取引履歴確認</button>
         </form>
         <form  class="form" action="" method="get">

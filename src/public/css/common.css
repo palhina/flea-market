@@ -68,6 +68,12 @@
     color: white;
 }
 
+.header-nav__button{
+    color: white;
+    border-style: none;
+    background-color: black;
+}
+
 .nav__item-sell {
     text-decoration: none;
     color: black;
