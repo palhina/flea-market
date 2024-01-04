@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\InformationMail;
 use App\Models\User;
+use App\Http\Requests\MailRequest;
 
 class MailController extends Controller
 {
@@ -15,8 +16,18 @@ class MailController extends Controller
     }
 
     // メール送信処理
-    public function sendEmail(Request $request){
-        $users = User::all();
+    public function sendEmail(MailRequest $request){
+        $selectedAddress = $request->input('email_address');
+        $users = [];
+        if($selectedAddress === 'customer'){
+            $users = User::whereNull('manager_id')->get();
+        }
+        elseif($selectedAddress === 'staff'){
+            $users = User::whereNotNull('manager_id')->get();
+        }
+        elseif($selectedAddress === 'all'){
+            $users = User::all();   
+        }
        	foreach($users as $user)
         $data = [
             'subject' => $request->input('subject'),

@@ -17,6 +17,13 @@
     border-bottom: 1px solid;
 }
 
+.email-address__select{
+    width: 70%;
+    height: 50px;
+    margin: 30px;
+    background-color: lavenderblush;
+}
+
 .information-email__content {
     background-color: #fff;
     padding: 30px;
@@ -51,10 +58,23 @@
     border-radius: 5px;
 }
 
+.form__error {
+    color: #FF5555;
+}
+
 @media screen and (max-width: 768px) {
     .information-email__wrapper {
         width: 100%;
         margin: 20px auto;
+    }
+
+    .email-address__select {
+        height: 30px;
+        margin: 10px;
+    }
+
+    .information-email__content {
+        padding: 10px;
     }
 
     .send-email__btn {
