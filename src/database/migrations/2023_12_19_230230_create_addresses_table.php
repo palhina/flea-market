@@ -16,9 +16,9 @@ class CreateAddressesTable extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
-            $table->string('postcode');
-            $table->string('address');
-            $table->string('building')->nullable();
+            $table->string('postcode', 8);
+            $table->string('address', 191);
+            $table->string('building', 191)->nullable();
             $table->timestamps();
         });
     }

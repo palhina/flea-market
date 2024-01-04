@@ -9,6 +9,11 @@
 @endsection
 
 @section('content')
+    @if(session('result'))
+        <div class="flash_message">
+            {{ session('result') }}
+        </div>
+    @endif
     <div class="menu__contents">
         <h1>こんにちは、{{ $admin->name }}さん</h1>
         <p>管理者権限でログイン中</p>

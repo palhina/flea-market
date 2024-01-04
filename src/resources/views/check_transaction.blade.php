@@ -28,9 +28,21 @@
                         @foreach($transactionData['transactions'] as $transaction)
                         <tr class="transaction-confirm__row">
                             <td class="transaction-confirm__detail">{{$transaction->created_at}}
-                            </td> 
-                            <td class="transaction-confirm__detail">{{$transaction->user->name}}</td>
-                            <td class="transaction-confirm__detail">{{$transaction->user->email}}</td>
+                            </td>
+                            <td class="transaction-confirm__detail">
+                                @if($transaction->user !== null)
+                                    {{$transaction->user->name}}
+                                @else
+                                    -
+                                @endif
+                            </td>
+                            <td class="transaction-confirm__detail">
+                                @if($transaction->user !== null)
+                                    {{$transaction->user->email}}
+                                @else
+                                    -
+                                @endif
+                            </td>
                             <td class="transaction-confirm__detail">{{$transaction->item->item_name}}</td>
                         </tr>
                         @endforeach
