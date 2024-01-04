@@ -24,7 +24,7 @@ class AccountCreationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','max:191'],
+            'name' => ['required','string','max:191'],
             'email' => ['required','email','unique:admins,email','unique:managers,email','max:191'],
             'password' => ['required','min:8','max:191']
         ];
@@ -33,6 +33,7 @@ class AccountCreationRequest extends FormRequest
     {
         return [
         'name.required' => '名前を入力してください',
+        'name.string' => '名前は文字列で入力してください',
         'name.max' => '名前は191文字以下で入力してください',
         'email.required' => 'メールアドレスを入力してください',
         'email.email' => 'メールアドレスを入力してください',
