@@ -191,7 +191,11 @@ Mailtrap
 ８．必要に応じて、ダミーデータの作成を行ってください：
 
         $php artisan db:seed
+	
+９．画像のアップロードを行うため、シンボリックリンクを作成します：
 
+        $php artisan storage:link
+  
   
 * アプリケーションはデフォルトで http://localhost でアクセスできます。
 
