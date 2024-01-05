@@ -14,7 +14,7 @@
             </div>
         </form>
         <nav class="header-nav">
-            @if (Auth::check())
+            @if (Auth::guard('web')->check())
             <ul class="header-nav__list">
                 <li class="header-nav__item"><a class="nav__item" href="/logout">ログアウト</a></li>
                 @if(!auth()->user()->manager_id)
@@ -25,7 +25,7 @@
             @elseif(Auth::guard('admins')->check())
             <ul class="header-nav__list">
                 <li class="header-nav__item">
-                    <form class="form" action="/logout/admin" method="post">
+                    <form class="form" action="/logout/admin" method="get">
                     @csrf
                         <button class="header-nav__button">ログアウト</button>
                     </form>
@@ -35,7 +35,7 @@
             @elseif(Auth::guard('managers')->check())
             <ul class="header-nav__list">
                 <li class="header-nav__item">
-                    <form class="form" action="/logout/manager" method="post">
+                    <form class="form" action="/logout/manager" method="get">
                     @csrf
                         <button class="header-nav__button">ログアウト</button>
                     </form>

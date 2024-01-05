@@ -47,7 +47,6 @@ Route::middleware('auth')->group(function (){
     Route::put('/mypage/profile/{id}', [ProfileController::class, 'postEditAddress']);
     Route::get('/mypage', [ProfileController::class, 'soldItem']);
     Route::get('/mypage/buy', [ProfileController::class, 'boughtItem']);
-
 });
 
 
@@ -61,29 +60,32 @@ Route::post('/login', [AuthController::class, 'postLogin']);
 // 店舗代表者作成、ログイン機能　
 Route::get('/register/manager', [AuthController::class, 'managerRegister']);
 Route::post('/register/manager', [AuthController::class, 'postManagerRegister']);
-Route::get('/login/manager', [AuthController::class, 'managerLogin']);
+Route::get('/login/manager', [AuthController::class, 'managerLogin'])->name('login.manager');
 Route::post('/login/manager', [AuthController::class, 'postManagerLogin']);
-Route::post('/logout/manager', [AuthController::class,'managerLogout']);
 
 // 管理者作成・ログイン機能　
 Route::get('/register/admin', [AuthController::class, 'adminRegister']);
 Route::post('/register/admin', [AuthController::class, 'postAdminRegister']);
-Route::get('/login/admin', [AuthController::class, 'adminLogin']);
+Route::get('/login/admin', [AuthController::class, 'adminLogin'])->name('login.admin');
 Route::post('/login/admin', [AuthController::class, 'postAdminLogin']);
-Route::post('/logout/admin', [AuthController::class,'adminLogout']);
 
 // 管理者機能
-Route::get('/menu/admin', [HomeController::class, 'adminMenu']);
-Route::get('/delete/user', [HomeController::class, 'deleteUser']);
-Route::delete('/delete/user/{id}', [HomeController::class, 'postDeleteUser']);
-Route::get('/check/transaction', [HomeController::class, 'transaction']);
-Route::get('/send_email', [MailController::class, 'email']);
-Route::post('/send_email', [MailController::class, 'sendEmail']);
+Route::middleware('auth.admins:admins')->group(function (){
+    Route::get('/logout/admin', [AuthController::class,'adminLogout']);
+    Route::get('/menu/admin', [HomeController::class, 'adminMenu']);
+    Route::get('/delete/user', [HomeController::class, 'deleteUser']);
+    Route::delete('/delete/user/{id}', [HomeController::class, 'postDeleteUser']);
+    Route::get('/check/transaction', [HomeController::class, 'transaction']);
+    Route::get('/send_email', [MailController::class, 'email']);
+    Route::post('/send_email', [MailController::class, 'sendEmail']);
+});
 
 // 店舗代表者機能
-Route::get('/menu/manager', [HomeController::class, 'managerMenu']);
-Route::get('/register/staff', [AuthController::class, 'staffRegister']);
-Route::post('/register/staff', [AuthController::class, 'postStaffRegister']);
-Route::get('/delete/staff', [HomeController::class, 'deleteStaff']);
-Route::delete('/delete/staff/{id}', [HomeController::class, 'postDeleteStaff']);
-
+Route::middleware('auth.managers:managers')->group(function (){
+    Route::get('/logout/manager', [AuthController::class,'managerLogout']);
+    Route::get('/menu/manager', [HomeController::class, 'managerMenu']);
+    Route::get('/register/staff', [AuthController::class, 'staffRegister']);
+    Route::post('/register/staff', [AuthController::class, 'postStaffRegister']);
+    Route::get('/delete/staff', [HomeController::class, 'deleteStaff']);
+    Route::delete('/delete/staff/{id}', [HomeController::class, 'postDeleteStaff']);
+});
