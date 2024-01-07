@@ -49,8 +49,6 @@ Route::middleware('auth')->group(function (){
     Route::get('/mypage/buy', [ProfileController::class, 'boughtItem']);
 });
 
-
-
 // 一般利用者作成、一般利用者＆スタッフログイン機能
 Route::get('/register', [AuthController::class, 'register']);
 Route::post('/register', [AuthController::class, 'postRegister']);

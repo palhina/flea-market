@@ -16,9 +16,9 @@ class FavoriteController extends Controller
     // お気に入り追加機能
     public function addFavorite(Request $request,$id)
     {
-        $user = Auth::user();
-        $userId = Auth::user()->id;
         $item = Item::find($id);
+        $user = Auth::user();
+        $userId = $user->id;
         Favorite::create([
             'user_id' => $user->id,
             'item_id' => $item->id,
