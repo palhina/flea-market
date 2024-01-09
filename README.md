@@ -145,7 +145,8 @@ PHP Unit 9.6.15
 Mailtrap
 
 ## テーブル設計  
-![テーブル仕様書](https://github.com/palhina/flea-market/assets/129643430/2fafd63c-4c02-40cd-be56-1b34fe751a91)    
+![テーブル設計書](https://github.com/palhina/flea-market/assets/129643430/f5048f91-cff0-48c0-865b-f3308068bb72)  
+    
 
 ## ER図  
 ![market ER](https://github.com/palhina/flea-market/assets/129643430/076a1862-e43c-4691-9da5-4c4f1f9200a4)  
