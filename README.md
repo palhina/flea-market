@@ -144,10 +144,9 @@ Composer 2.6.2
 PHP Unit 9.6.15  
 Mailtrap
 
-## テーブル設計  
-![テーブル設計書](https://github.com/palhina/flea-market/assets/129643430/f5048f91-cff0-48c0-865b-f3308068bb72)  
-    
-
+## テーブル設計      
+![テーブル設計書](https://github.com/palhina/flea-market/assets/129643430/dcbc9ccf-e470-4052-9863-3ab887b480a3)
+  
 ## ER図  
 ![market ER](https://github.com/palhina/flea-market/assets/129643430/076a1862-e43c-4691-9da5-4c4f1f9200a4)  
   
