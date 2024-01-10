@@ -26,11 +26,6 @@
                     </label>
                 </div>
             </div>
-            <div class="form__error">
-                @if ($errors->has('item_img'))
-                    {{$errors->first('item_img')}}
-                @endif
-            </div>
             <div class="sell-item__content">
                 <div class="sell-title__form-content">
                     <div class="sell-item__group-detail">
