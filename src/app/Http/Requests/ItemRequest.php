@@ -24,7 +24,6 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_img' => ['required'],
             'category_name' => ['required'],
             'condition_name' => ['required'],
             'name' => ['required', 'string','max:191'],
@@ -36,7 +35,6 @@ class ItemRequest extends FormRequest
     public function messages()
     {
         return [
-            'item_img.required' => '商品画像を入力してください',
             'category_name.required' => 'カテゴリーは1つ以上入力してください',
             'condition_name.required' => '商品の状態を入力してください',        
             'name.required' => '商品名を入力してください',

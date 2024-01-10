@@ -15,7 +15,7 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            'payment_method'=>$this->faker->randomElement(['コンビニ払い','代金引換',]),
+            'payment_method'=>$this->faker->unique()->randomElement(['コンビニ払い','代金引換',]),
         ];
     }
 }

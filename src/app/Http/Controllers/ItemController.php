@@ -87,18 +87,20 @@ class ItemController extends Controller
     public function sell(ItemRequest $request,$id)
     {
         $userId = Auth::id();
-        $filename=$request->item_img->getClientOriginalName();
-        $img=$request->item_img->storeAs('item',$filename,'public');
-        
-        $item = Item::create([
+        if ($request->hasFile('item_img'))
+        {
+            $filename=$request->item_img->getClientOriginalName();
+            $img = $request->item_img->storeAs('item',$filename,'public');
+            $itemData['img_url'] = $img;
+        }
+        $itemData = [
             'user_id' => $userId,
             'condition_id' => $request->input('condition_name'),
-            'img_url' => $img,
             'item_name' => $request->input('name'),
             'description' => $request->input('comment'),
             'price' => $request->input('price'),
-        ]);
-
+        ];      
+        $item = Item::create($itemData);
         
         ItemCategory::create([
             'item_id' => $item->id,

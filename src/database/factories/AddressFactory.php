@@ -19,9 +19,9 @@ class AddressFactory extends Factory
             'user_id' => function () {
                 return User::factory()->create()->id;
             },
-            'postcode'=>$this->fake()->postcode(),
-            'address'=>$this->fake()->address(),
-            'building'=>$this->fake()->secondaryAddress(),
+            'postcode'=>$this->faker->postcode(),
+            'address'=>$this->faker->address(),
+            'building'=>$this->faker->secondaryAddress(),
         ];
     }
 }
