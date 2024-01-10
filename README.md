@@ -72,7 +72,8 @@
 + 商品名：入力必須、191文字以内、文字列型。    
 + 商品詳細：入力必須、2000文字以内、文字列型。  
 + 商品価格：入力必須、数値型、最大99999999。
-+ 商品カテゴリー、状態、画像：入力必須。（カテゴリーは必須部分のみバリデーション設定）  
++ 商品カテゴリー、状態：入力必須。（カテゴリーは必須部分のみバリデーション設定）
++ 商品画像は入力任意。  
 ![出品](https://github.com/palhina/flea-market/assets/129643430/e95179ec-0172-43f5-bd31-bbcb3e192d27)
 
 ### 管理者、店舗代表者登録ページ    
@@ -141,12 +142,12 @@ Nginx 1.21.1
 MySQL 8.0.35  
 PHP 8.1.2  
 Composer 2.6.2  
-PHP Unit 9.6.15
+PHP Unit 9.6.15  
 Mailtrap
 
-## テーブル設計  
-    
-
+## テーブル設計      
+![テーブル設計書](https://github.com/palhina/flea-market/assets/129643430/dcbc9ccf-e470-4052-9863-3ab887b480a3)
+  
 ## ER図  
 ![market ER](https://github.com/palhina/flea-market/assets/129643430/076a1862-e43c-4691-9da5-4c4f1f9200a4)  
   
