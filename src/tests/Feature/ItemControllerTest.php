@@ -51,22 +51,20 @@ class ItemControllerTest extends TestCase
     {
         // ダミーデータ作成
         $this->seed(ItemsTableSeeder::class);      
-        $this->user = User::factory()->create(['id' => 1]);
-        $this->item = Item::first();       
-        Favorite::factory()->count(5)->create(['item_id' => $this->item->id]);
-        Comment::factory()->count(3)->create(['item_id' => $this->item->id]);
+        $user = User::factory()->create(['id' => 1]);
+        $item = Item::first();       
+        Favorite::factory()->count(5)->create(['item_id' => $item->id]);
+        Comment::factory()->count(3)->create(['item_id' => $item->id]);
         ItemCategory::factory()->create(['item_id'=>1,'category_id'=>1]);
         $this->category = Category::factory()->create(['id'=>1]);
         $this->condition = Condition::factory()->create(['id' => 2]);
 
         // ページ表示
-        $url = '/item/' . $this->item->id;
-        $this->actingAs($this->user);
-        $response = $this->actingAs($this->user)->get($url);
+        $response = $this->actingAs($user)->get("/item/{$item->id}");
         $response->assertOk();
         $response->assertViewIs('item_detail');
         $response->assertViewHasAll([
-            'item' => $this->item,
+            'item' => $item,
             'favoriteCount' => 5, 
             'commentCount' => 3,
         ]);
@@ -131,7 +129,7 @@ class ItemControllerTest extends TestCase
             'price' => 1000,
         ];
         
-        // データ送信、DB(itemsテーブル,item_categoriesテーブル)への保存確認
+        // 出品処理
         $response = $this->actingAs($this->user)->post("/sell/{$this->user->id}", $itemData);
         $this->assertDatabaseHas('items', [
             'item_name' => 'testItem',
