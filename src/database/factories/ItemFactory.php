@@ -23,10 +23,9 @@ class ItemFactory extends Factory
             'condition_id' => function () {
                 return Condition::factory()->create()->id;
             },
-            'img_url' =>$this->faker->imageURL(),
             'item_name' =>$this->faker->word,
-            'discription' =>$this->faker->sentences(10),
-            'price' =>$this->faker->numberBetween(1,1000000),
+            'description' =>$this->faker->paragraphs(3, true),
+            'price' =>$this->faker->numberBetween(1,1000),
         ];
     }
 }

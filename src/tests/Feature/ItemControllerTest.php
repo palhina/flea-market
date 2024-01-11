@@ -16,14 +16,12 @@ use App\Models\Comment;
 use App\Models\SoldItem;
 use App\Models\Condition;
 use App\Models\Address;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\UploadedFile;
+
 
 class ItemControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    // テスト用ダミーデータ作成
     public function setUp(): void
     {
         parent::setUp();
@@ -38,7 +36,7 @@ class ItemControllerTest extends TestCase
         $response->assertViewIs('items_recommend');
     }
 
-    // 商品一覧(マイリスト)テスト
+    // 商品一覧(マイリスト)表示テスト
     public function test_favorite()
     {
         $this->user = User::factory()->create(['id' => 1]);
@@ -60,6 +58,7 @@ class ItemControllerTest extends TestCase
         ItemCategory::factory()->create(['item_id'=>1,'category_id'=>1]);
         $this->category = Category::factory()->create(['id'=>1]);
         $this->condition = Condition::factory()->create(['id' => 2]);
+
         // ページ表示
         $url = '/item/' . $this->item->id;
         $this->actingAs($this->user);
@@ -73,13 +72,14 @@ class ItemControllerTest extends TestCase
         ]);
     }  
 
-    // 購入ページ表示
+    // 購入ページ表示テスト
     public function test_purchase()
     {
         $this->seed(ItemsTableSeeder::class);      
         $this->user = User::factory()->create(['id' => 1]);
         $this->item = Item::first();     
         $address = Address::factory()->create(['user_id'=>1]);
+
         $this->actingAs($this->user);
         $response = $this->actingAs($this->user)->get("/purchase/{$this->item->id}");
         $response->assertOk();
@@ -90,7 +90,7 @@ class ItemControllerTest extends TestCase
         ]);
     }
 
-        // 購入処理
+    // 購入処理テスト
     public function test_getItem()
     {
         $this->seed(ItemsTableSeeder::class);      
@@ -106,7 +106,7 @@ class ItemControllerTest extends TestCase
         ]);
     }  
 
-    // 出品ページ表示
+    // 出品ページ表示テスト
     public function test_list()
     {
         $this->user = User::factory()->create(['id' => 1]);
@@ -115,34 +115,57 @@ class ItemControllerTest extends TestCase
         $response->assertViewIs('sell_item');
     }
 
-        // 出品処理
+    // 出品処理テスト
     public function test_sell()
     {
-        // 仮想ディスク作成、ダミー商品データの準備
+        // ダミー商品データ作成
         $this->user = User::factory()->create(['id' => 1]);
         $itemcategory = ItemCategory::factory()->create(['item_id'=>1,'category_id'=>1]);
         $this->category = Category::factory()->create(['id'=>1]);
         $this->condition = Condition::factory()->create(['id' => 1]);
         $itemData = [
-            'condition_name' => $this->condition->condition_name,
-            'category_name' => $this->category->category_name,
+            'condition_name' => $this->condition->id,
+            'category_name' => $this->category->id,
             'name' => 'testItem',
             'comment' => 'testComment',
             'price' => 1000,
         ];
-        $response = $this->actingAs($this->user)->post("/sell/{$this->user->id}", $itemData);
-        dd($response);
+        
         // データ送信、DB(itemsテーブル,item_categoriesテーブル)への保存確認
+        $response = $this->actingAs($this->user)->post("/sell/{$this->user->id}", $itemData);
         $this->assertDatabaseHas('items', [
-            'name' => 'testItem',
-            'comment' => 'testComment',
+            'item_name' => 'testItem',
+            'description' => 'testComment',
             'price' => 1000,
         ]);
         $this->assertDatabaseHas('item_categories', [
             'item_id' => Item::first()->id,
             'category_id' => $this->category->id,
         ]);
-
     }
+
+    // 検索機能テスト
+    public function test_search()
+    {
+        // ダミー商品データ作成
+        $item1 = Item::factory()->create(['id'=>1, 'item_name' => 'アイテム1', 'description' => '説明1']);
+        $item2 = Item::factory()->create(['item_name' => 'アイテム2', 'description' => '説明2']);
+        $itemcategory = ItemCategory::factory()->create(['item_id'=>1,'category_id'=>1]);
+        $category = Category::factory()->create(['id' =>1, 'category_name' => 'カテゴリ1']);
+
+        // 検索機能テスト(商品名、詳細、カテゴリ)
+        $response = $this->post('/search', ['keyword' => 'アイテム1']);
+        $this->assertEquals('アイテム1', $item1['item_name']);
+        $this->assertEquals('説明1', $item1['description']);
+
+        $response = $this->post('/search', ['keyword' => '説明2']);
+        $this->assertEquals('アイテム2', $item2['item_name']);
+        $this->assertEquals('説明2', $item2['description']);
+
+        $response = $this->post('/search', ['keyword' => 'カテゴリ1']);
+        $this->assertEquals('アイテム1', $item1['item_name']);
+        $this->assertEquals('説明1', $item1['description']);
+    }
+
 }
 
