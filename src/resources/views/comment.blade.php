@@ -64,15 +64,20 @@
 
             @foreach($comments as $singleComment)
             <div class="item__rate-comment">
-                <div class="@if($singleComment->user->id === Auth::user()->id) rate__profile-user @else rate__profile @endif">
-                    @if (strpos($singleComment->user->img_url, '/images/profile/') === 0)
-                        <img class="rate__profile-photo" accept="image/*" src="{{ $singleComment->user->img_url }}">
-                    @elseif (strpos($singleComment->user->img_url, 'profile/') === 0)
-                        <img class="rate__profile-photo" accept="image/*" src="{{asset('storage/' . $singleComment->user->img_url)}}">
+                <div class="@if($singleComment->user && $singleComment->user->id === Auth::user()->id) rate__profile-user @else rate__profile @endif">
+                    @if($singleComment->user)
+                        @if (strpos($singleComment->user->img_url, '/images/profile/') === 0)
+                            <img class="rate__profile-photo" accept="image/*" src="{{ $singleComment->user->img_url }}">
+                        @elseif (strpos($singleComment->user->img_url, 'profile/') === 0)
+                            <img class="rate__profile-photo" accept="image/*" src="{{asset('storage/' . $singleComment->user->img_url)}}">
+                        @else
+                            <img class="rate__profile-photo" accept="image/*" src="/images/icon/no_image.jpg">
+                        @endif
+                        <p class="rate__profile-name">{{ $singleComment->user->name }}</p>
                     @else
                         <img class="rate__profile-photo" accept="image/*" src="/images/icon/no_image.jpg">
+                        <p class="rate__profile-name">削除されたユーザー</p>
                     @endif
-                    <p class="rate__profile-name">{{ $singleComment->user->name }}</p>
                 </div>
                 <p class="rate__comments">{{ $singleComment->comment }}</p>
                 @if($singleComment->user_id === auth()->user()->id)
