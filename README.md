@@ -220,7 +220,7 @@ Mailtrap
 また、それぞれの住所(addressesテーブル)も作成しております。
 ショップスタッフは店舗代表者名manager1が作成したものとして、staff1(staff1@mail.com)を登録しています。
 パスワードはいずれも「1234567890」  
-* マイリスト(favoritesテーブル)、コメント(commentsテーブル) 、販売済み商品(soldItemsテーブル)、商品の状態(conditionsテーブル)、カテゴリー(categoriesテーブルおよびItemCaregoriesテーブル)、支払方法(paymentsテーブル) 
+* マイリスト(favoritesテーブル)、コメント(commentsテーブル) 、販売済み商品(soldItemsテーブル)、商品の状態(conditionsテーブル)、カテゴリー(categoriesテーブルおよびitemCaregoriesテーブル)、支払方法(paymentsテーブル) 
   いずれも適当に作成しております。  
 * 商品情報(itemsテーブル)  
   10個の商品名・画像・値段・出品者等の登録をしております。      
