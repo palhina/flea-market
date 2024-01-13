@@ -109,9 +109,9 @@
 
 ## アプリケーションURL  
 GithubURL：https://github.com/palhina/flea-market.git  
-　(開発環境用ElasticIP)  
-　(本番環境用ElasticIP)  
-http://coachtech-fleamarket.click（本番環境と紐づけています）  
+　(開発環境用ElasticIP)  15.168.119.27   
+　(本番環境用ElasticIP)  54.178.44.196  
+URL  http://coachtech-fleamarket.click	（本番環境と紐づけています）  
 
 ## ほかのレポジトリ  
 今回はなし  
