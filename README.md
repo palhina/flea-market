@@ -109,7 +109,9 @@
 
 ## アプリケーションURL  
 GithubURL：https://github.com/palhina/flea-market.git  
-  （別途設定が必要です：追記部分に後述）  
+　(開発環境用ElasticIP)  15.168.119.27   
+　(本番環境用ElasticIP)  54.178.44.196  
+URL  http://coachtech-fleamarket.click	（本番環境と紐づけています）  
 
 ## ほかのレポジトリ  
 今回はなし  
@@ -218,7 +220,7 @@ Mailtrap
 また、それぞれの住所(addressesテーブル)も作成しております。
 ショップスタッフは店舗代表者名manager1が作成したものとして、staff1(staff1@mail.com)を登録しています。
 パスワードはいずれも「1234567890」  
-* マイリスト(favoritesテーブル)、コメント(commentsテーブル) 、販売済み商品(soldItemsテーブル)、商品の状態(conditionsテーブル)、カテゴリー(categoriesテーブルおよびItemCaregoriesテーブル)、支払方法(paymentsテーブル) 
+* マイリスト(favoritesテーブル)、コメント(commentsテーブル) 、販売済み商品(soldItemsテーブル)、商品の状態(conditionsテーブル)、カテゴリー(categoriesテーブルおよびitemCaregoriesテーブル)、支払方法(paymentsテーブル) 
   いずれも適当に作成しております。  
 * 商品情報(itemsテーブル)  
   10個の商品名・画像・値段・出品者等の登録をしております。      
@@ -237,12 +239,13 @@ Mailtrap
   
 １．IAMユーザーでログイン  
 　　ユーザー名：study（権限：administration）アカウントID：973518952750、パスワード：dYfX58MBでログインしてください。  
-２．開発環境として、大阪リージョンにVPC(rese-aws-vpc)を作成しております。  
-　　EC2インスタンス(rese-aws-web)とRDSインスタンス(rese-aws-db)を開始してください。  
+２．開発環境として、大阪リージョンにVPC(fleamarket-aws-vpc)を作成しております。  
+　　EC2インスタンス(fleamarket-aws-web)とRDSインスタンス(fleamarket-aws-db)を開始してください。  
 ３．それぞれが正常に起動したことを確認し、EC2インスタンスのパブリックIPv4アドレス、あるいはパブリックIPv4DNSをブラウザに入力してください。  
+　　なお、使用するS3バケット名はfleamarket-aws-s3としております。  
   
 **開発環境と本番環境について**　　
 * 開発環境は上記のように大阪リージョンに作成しております。  
-* 本番環境を想定したものは、開発環境と異なるVPC(rese-launch-vpc)およびリージョン(東京)で、EC2インスタンス名：rese-launch-web、RDSインスタンス名：rese-launch-dbとして作成しました。  
-  本番環境はURL (http://rese-aws-launch.shop) からアクセスも可能です。  
-  その場合はElasticIPアドレスを発行しEC2インスタンスに紐づけた後、Route53のレコード名：rese-aws-launch.shopレコードタイプ：Aの値をElasticIPの値に変更してください。  
+* 本番環境を想定したものは、開発環境と異なるVPC(fleamarket-launch-vpc)およびリージョン(東京)で、EC2インスタンス名：fleamarket-launch-web、RDSインスタンス名：fleamarket-launch-db、S3バケット名：fleamarket-launch-s3adminとして作成しました。  
+  本番環境はURL (http://coachtech-fleamarket.click) からアクセスも可能です。  
+  その場合はElasticIPアドレスを発行しEC2インスタンスに紐づけた後、Route53のレコード名：coachtech-fleamarket.clickレコードタイプ：Aの値をElasticIPの値に変更してください。  
