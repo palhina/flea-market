@@ -39,8 +39,8 @@
                 @csrf
                 @if (strpos($item->img_url, '/images/item/') === 0)
                     <input class="card__img" type="image" id="image" alt="Item" src="{{ $item->img_url }}" />
-                @elseif (strpos($item->img_url, 'item/') === 0)
-                    <input class="card__img" type="image" id="image" alt="Item" src="{{asset('storage/' . $item->img_url)}}" />
+                @elseif ($item->img_url)
+                    <input class="card__img" type="image" id="image" alt="Item" src="{{Storage('s3')->url($item->img_url)}}" />
                 @else
                     <input class="card__img" type="image" id="image" alt="Item" src="/images/icon/no_image.jpg" />
                 @endif

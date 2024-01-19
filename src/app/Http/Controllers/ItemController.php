@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ItemRequest;
 use App\Http\Requests\ShoppingRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Item;
 use App\Models\Favorite;
 use App\Models\Comment;
@@ -91,7 +92,7 @@ class ItemController extends Controller
         if ($request->hasFile('item_img'))
         {
             $filename=$request->item_img->getClientOriginalName();
-            $img = $request->item_img->storeAs('item',$filename,'public');
+            $img = Storage::disk('s3')->putFileAs('item', $request->file('item_img'), $filename, 'public');
         }
         $item = Item::create([
             'user_id' => $userId,

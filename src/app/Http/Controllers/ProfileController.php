@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddressRequest;
 use App\Models\Item;
 use App\Models\Address;
-use App\Models\Favorite;
-use App\Models\Comment;
-use App\Models\Payment;
 use App\Models\SoldItem;
 
 class ProfileController extends Controller
