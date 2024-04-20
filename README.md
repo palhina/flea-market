@@ -108,10 +108,7 @@
 ある企業の、自社ブランドアイテムを出品するフリーマーケットサイトを作成    
 
 ## アプリケーションURL  
-GithubURL：https://github.com/palhina/flea-market.git  
-　(開発環境用ElasticIP)  15.168.119.27   
-　(本番環境用ElasticIP)  54.178.44.196  
-URL  http://coachtech-fleamarket.click	（本番環境と紐づけています）  
+GithubURL：https://github.com/palhina/flea-market.git   
 
 ## ほかのレポジトリ  
 今回はなし  
@@ -233,9 +230,4 @@ Mailtrap
 **権限について**  
 利用者として、usersテーブルには一般利用者とショップスタッフが含まれます。  
 ショップスタッフは、商品の閲覧・コメント・出品は可能ですが、マイリスト登録や購入等のボタンは表示されないように設定しております。  
-  
-**開発環境と本番環境について**　　
-* 開発環境は上記のように大阪リージョンに作成しております。  
-* 本番環境を想定したものは、開発環境と異なるVPC(fleamarket-launch-vpc)およびリージョン(東京)で、EC2インスタンス名：fleamarket-launch-web、RDSインスタンス名：fleamarket-launch-db、S3バケット名：fleamarket-launch-s3adminとして作成しました。  
-  本番環境はURL (http://coachtech-fleamarket.click) からアクセスも可能です。  
-  その場合はElasticIPアドレスを発行しEC2インスタンスに紐づけた後、Route53のレコード名：coachtech-fleamarket.clickレコードタイプ：Aの値をElasticIPの値に変更してください。  
+ 
